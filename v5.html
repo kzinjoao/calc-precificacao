@@ -27,7 +27,8 @@
     --ink:#1A1714; --ink-2:#453E37; --muted:#7C736A;
     --line:#E5DFD6; --line-2:#D3CABD;
     --accent:#0E5B4C; --accent-ink:#0A4739; --accent-soft:#E2EFEA;
-    --warn:#9E4520; --warn-soft:#FAEBE3; --gold:#9C7429; --gold-soft:#F5EEDF;
+    --warn:#9E4520; --warn-soft:#FAEBE3;
+    --gold:#9C7429; --gold-soft:#F5EEDF;
     --btn-ink:#FFFFFF; --shadow-sm:0 6px 18px rgba(26,23,20,.06);
     --r-lg:20px; --r-md:14px;
     --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -54,51 +55,66 @@
   * { box-sizing:border-box; }
   body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
     font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; }
-  .wrap { max-width:470px; margin:0 auto; padding:24px 18px 56px; }
+  .wrap { max-width:470px; margin:0 auto; padding:22px 18px 56px; }
 
-  h1 { font-size:clamp(23px,6vw,28px); line-height:1.16; letter-spacing:-.03em; font-weight:700; margin:0 0 6px; text-wrap:balance; }
-  .lede { color:var(--muted); font-size:14.5px; margin:0 0 24px; }
+  .top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .brand { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:650; }
+  .stepno { font-family:var(--mono); font-size:11.5px; color:var(--muted); }
+  .rail { height:3px; background:var(--line); border-radius:99px; overflow:hidden; margin-bottom:24px; }
+  .rail i { display:block; height:100%; width:0; background:var(--accent); border-radius:99px; transition:width .4s cubic-bezier(.22,.7,.3,1); }
 
-  .f { margin-bottom:20px; }
-  .f > label { display:block; font-size:14.5px; font-weight:650; color:var(--ink); margin-bottom:7px; }
-  .f .calm { font-size:12.5px; color:var(--muted); margin:7px 0 0; line-height:1.45; }
-  .f .calm b { color:var(--accent-ink); font-weight:600; }
-  @media (prefers-color-scheme: dark) { .f .calm b { color:var(--accent); } }
+  .step { display:none; }
+  .step.on { display:block; }
+  .kicker { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700; margin:0 0 8px; }
+  h1, h2 { font-size:clamp(22px,5.8vw,27px); line-height:1.18; letter-spacing:-.028em; font-weight:700; margin:0 0 8px; text-wrap:balance; }
+  .lede { color:var(--muted); font-size:14.5px; margin:0 0 20px; }
+  .lede strong { color:var(--ink-2); font-weight:600; }
+
+  .grid { display:flex; flex-direction:column; gap:8px; }
+  .opt { width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--line);
+    border-radius:var(--r-md); padding:14px 15px; cursor:pointer; font-family:inherit; color:var(--ink);
+    display:flex; flex-direction:column; gap:2px; transition:border-color .15s, box-shadow .15s; }
+  .opt:hover { border-color:var(--line-2); }
+  .opt.on { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .opt .t { font-weight:600; font-size:15px; }
+  .opt .d { font-size:12.5px; color:var(--muted); line-height:1.4; }
 
   .chips { display:flex; flex-wrap:wrap; gap:7px; }
   .chip { background:var(--surface); border:1.5px solid var(--line); border-radius:99px;
-    padding:9px 14px; font-family:inherit; font-size:13.5px; color:var(--ink); cursor:pointer;
+    padding:9px 15px; font-family:var(--mono); font-size:13.5px; color:var(--ink); cursor:pointer;
     transition:border-color .15s, background .15s; }
-  .chip.num { font-family:var(--mono); }
   .chip:hover { border-color:var(--line-2); }
   .chip.on { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); font-weight:650; }
 
-  select, input[type="number"] { width:100%; background:var(--surface); border:1.5px solid var(--line);
-    border-radius:var(--r-md); padding:13px 14px; font-family:inherit; font-size:16px; color:var(--ink);
-    transition:border-color .15s, box-shadow .15s; }
-  select { appearance:none; -webkit-appearance:none; cursor:pointer;
-    background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
-    background-position:calc(100% - 19px) 21px, calc(100% - 14px) 21px; background-size:5px 5px,5px 5px;
-    background-repeat:no-repeat; padding-right:40px; }
-  input[type="number"] { font-family:var(--mono); padding-left:40px; -moz-appearance:textfield; font-variant-numeric:tabular-nums; }
-  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
-  select:focus, input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .f { margin-bottom:19px; }
+  .f > label { display:block; font-size:14.5px; font-weight:650; color:var(--ink); margin-bottom:4px; }
+  .f .help { font-size:13px; color:var(--muted); margin:0 0 9px; line-height:1.45; }
+  .f .calm { font-size:12.5px; color:var(--accent-ink); margin:7px 0 0; line-height:1.45; }
+  @media (prefers-color-scheme: dark) { .f .calm { color:var(--accent); } }
+
   .money { position:relative; display:flex; align-items:center; }
   .money .rs { position:absolute; left:14px; font-family:var(--mono); font-size:15px; color:var(--muted); pointer-events:none; }
+  input[type="number"] { width:100%; background:var(--surface); border:1.5px solid var(--line);
+    border-radius:var(--r-md); padding:13px 14px 13px 40px; font-family:var(--mono); font-size:16.5px;
+    color:var(--ink); font-variant-numeric:tabular-nums; -moz-appearance:textfield; transition:border-color .15s, box-shadow .15s; }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+  input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
   :focus-visible { outline:2.5px solid var(--accent); outline-offset:2px; border-radius:6px; }
 
-  .sep { height:1px; background:var(--line); margin:26px 0 22px; }
-  .sep-t { font-size:11.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:0 0 16px; }
+  .why { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:13px 15px; margin:16px 0 0; }
+  .why b { display:block; font-size:13px; color:var(--ink-2); margin-bottom:3px; }
+  .why p { margin:0; font-size:13px; color:var(--muted); line-height:1.5; }
 
-  .btn { width:100%; background:var(--accent); color:var(--btn-ink); border:none; border-radius:99px;
-    padding:15px; font-family:inherit; font-size:16px; font-weight:670; cursor:pointer; transition:filter .15s; }
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:24px; }
+  .btn { background:var(--accent); color:var(--btn-ink); border:none; border-radius:99px;
+    padding:14px 26px; font-family:inherit; font-size:15px; font-weight:670; cursor:pointer; transition:filter .15s; }
   .btn:hover { filter:brightness(1.08); }
-  .btn[disabled] { opacity:.4; cursor:default; filter:none; }
+  .btn.wide { width:100%; }
+  .ghost { background:none; border:none; color:var(--muted); font-family:inherit; font-size:14px; cursor:pointer; padding:8px 2px; }
+  .ghost:hover { color:var(--ink-2); }
 
-  #res { display:none; }
-  #res.on { display:block; }
-  #form.off { display:none; }
-
+  /* resultado */
   .head { text-align:center; padding:0 0 18px; }
   .head .lead { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:650; margin:0 0 8px; }
   .head .price { font-family:var(--mono); font-size:clamp(38px,11.5vw,54px); font-weight:600;
@@ -130,6 +146,7 @@
   .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg);
     padding:17px 18px 15px; margin-top:13px; box-shadow:var(--shadow-sm); }
   .card h4 { font-size:11.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:0 0 11px; }
+
   .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
   .tab { background:var(--surface-2); border:1.5px solid var(--line); border-radius:99px; padding:7px 13px;
     font-family:inherit; font-size:12.5px; color:var(--ink-2); cursor:pointer; transition:border-color .15s, background .15s; }
@@ -139,6 +156,7 @@
   .copyrow { display:flex; align-items:center; gap:11px; margin-top:11px; }
   .copy { background:var(--accent); color:var(--btn-ink); border:none; border-radius:99px; padding:10px 19px;
     font-family:inherit; font-size:13.5px; font-weight:650; cursor:pointer; }
+  .copy:hover { filter:brightness(1.08); }
   .copied { font-size:12.5px; color:var(--accent-ink); opacity:0; transition:opacity .2s; }
   .copied.on { opacity:1; }
 
@@ -161,86 +179,141 @@
 </style>
 
 <div class="wrap">
+  <div class="top">
+    <span class="brand">Quanto cobrar</span>
+    <span class="stepno" id="stepno"></span>
+  </div>
+  <div class="rail"><i id="rail"></i></div>
 
-  <!-- ---------- TUDO NUMA TELA ---------- -->
-  <div id="form">
-    <h1>Quanto você deveria cobrar?</h1>
-    <p class="lede">Seis respostas. Chute honesto vale — dá pra corrigir e calcular de novo.</p>
-
-    <div class="f">
-      <label>1. Qual serviço?</label>
-      <div class="chips" id="gTec">
-        <button class="chip" data-v="130" data-n="fio a fio" data-k="fioafio" data-t="1.5">Fio a fio</button>
-        <button class="chip" data-v="148" data-n="híbrido" data-k="hibrido" data-t="1.5">Híbrido</button>
-        <button class="chip" data-v="148" data-n="volume brasileiro" data-k="brasileiro" data-t="2">Brasileiro</button>
-        <button class="chip" data-v="175" data-n="volume russo" data-k="russo" data-t="2">Russo</button>
-        <button class="chip" data-v="225" data-n="mega volume" data-k="mega" data-t="3">Mega volume</button>
-      </div>
+  <!-- 1 · SERVIÇO -->
+  <section class="step on" data-s="1">
+    <p class="kicker">01 · o serviço</p>
+    <h1>Qual serviço você quer calcular agora?</h1>
+    <p class="lede">Começa pelo que você mais faz na semana. Depois dá pra voltar e calcular os outros.</p>
+    <div class="grid" id="gTec">
+      <button class="opt" data-v="130" data-n="fio a fio" data-k="fioafio" data-t="1.5"><span class="t">Fio a fio / clássico</span></button>
+      <button class="opt" data-v="148" data-n="híbrido" data-k="hibrido" data-t="1.5"><span class="t">Híbrido</span></button>
+      <button class="opt" data-v="148" data-n="volume brasileiro" data-k="brasileiro" data-t="2"><span class="t">Volume brasileiro</span></button>
+      <button class="opt" data-v="175" data-n="volume russo" data-k="russo" data-t="2"><span class="t">Volume russo</span></button>
+      <button class="opt" data-v="225" data-n="mega volume" data-k="mega" data-t="3"><span class="t">Mega volume</span></button>
     </div>
-
-    <div class="f">
-      <label for="praca">2. Onde você atende?</label>
-      <select id="praca">
-        <option value="">Escolhe a que parece com a sua…</option>
-        <option value="1.00">Capital ou região metro do Sul/Sudeste</option>
-        <option value="0.95">Interior com dinheiro girando (Blumenau, Ribeirão)</option>
-        <option value="0.90">Cidade média do interior (Campinas, Juiz de Fora)</option>
-        <option value="0.82">Cidade pequena ou bairro de periferia</option>
-        <option value="0.78">Capital do Norte, Nordeste ou Centro-Oeste</option>
-      </select>
-      <p class="calm">Tabela da internet dá um preço só pro Brasil inteiro. Aí a menina de Goiânia recebe preço de São Paulo e a cliente some.</p>
+    <div class="why">
+      <b>A manutenção sai junto</b>
+      <p>Você não precisa calcular manutenção e remoção separado — no fim elas aparecem prontas, com base nesse serviço.</p>
     </div>
+  </section>
 
-    <div class="f">
-      <label>3. Quanto tempo ocupa da agenda?</label>
-      <div class="chips" id="gTempo">
-        <button class="chip num" data-v="1">1h</button>
-        <button class="chip num" data-v="1.5">1h30</button>
-        <button class="chip num" data-v="2">2h</button>
-        <button class="chip num" data-v="2.5">2h30</button>
-        <button class="chip num" data-v="3">3h</button>
-        <button class="chip num" data-v="3.5">3h30+</button>
-      </div>
-      <p class="calm" id="tempoCalm">Do oi ao tchau: preparo, aplicação e o tempo de arrumar a maca pra próxima.</p>
+  <!-- 2 · CIDADE -->
+  <section class="step" data-s="2">
+    <p class="kicker">02 · a sua cidade</p>
+    <h1>Onde você atende?</h1>
+    <p class="lede">A mesma aplicação não vale o mesmo em toda cidade. Escolhe a que mais parece com a sua.</p>
+    <div class="grid" id="gCidade">
+      <button class="opt" data-v="1.00"><span class="t">Capital ou região metropolitana do Sul/Sudeste</span><span class="d">São Paulo, Rio, BH, Curitiba, Porto Alegre</span></button>
+      <button class="opt" data-v="0.95"><span class="t">Cidade do interior com dinheiro girando</span><span class="d">Blumenau, Joinville, Ribeirão Preto</span></button>
+      <button class="opt" data-v="0.90"><span class="t">Cidade média do interior</span><span class="d">Campinas, Juiz de Fora, Londrina</span></button>
+      <button class="opt" data-v="0.82"><span class="t">Cidade pequena ou bairro de periferia</span><span class="d">Público que pesa mais o preço</span></button>
+      <button class="opt" data-v="0.78"><span class="t">Capital do Norte, Nordeste ou Centro-Oeste</span><span class="d">Salvador, Fortaleza, Goiânia, Cuiabá, Manaus</span></button>
     </div>
-
-    <div class="f">
-      <label for="material">4. Quanto sai de material?</label>
-      <div class="money"><span class="rs">R$</span><input type="number" id="material" inputmode="decimal" min="0" max="300" placeholder="Ex: 15"></div>
-      <p class="calm">Fios, cola, primer, pad, fita, descartáveis — por cliente. Quase ninguém sabe de cabeça: a maioria fica entre <b>R$ 10 e R$ 25</b>.</p>
+    <div class="why">
+      <b>Por que a gente pergunta isso</b>
+      <p>Tabela pronta da internet costuma dar um preço só pro Brasil inteiro. Aí a menina de Goiânia recebe preço de São Paulo, tenta cobrar e a cliente some.</p>
     </div>
+    <div class="nav"><button class="ghost" data-back="1">← Voltar</button><span></span></div>
+  </section>
 
-    <div class="f">
-      <label for="hora">5. Quanto você quer ganhar por hora?</label>
-      <div class="money"><span class="rs">R$</span><input type="number" id="hora" inputmode="decimal" min="0" max="1000" placeholder="Ex: 40"></div>
-      <p class="calm">É o que fica pra você, não o que a cliente paga. Pra ter uma ideia: quem tira <b>R$ 3.000 por mês trabalhando 4 dias de 6 horas</b> está ganhando por volta de <b>R$ 38 por hora</b>.</p>
-    </div>
-
-    <div class="f">
-      <label>6. Quanto de lucro por cima?</label>
-      <div class="chips" id="gMargem">
-        <button class="chip num" data-v="0.20">20%</button>
-        <button class="chip num on" data-v="0.30">30%</button>
-        <button class="chip num" data-v="0.40">40%</button>
-        <button class="chip num" data-v="0.50">50%</button>
-      </div>
-      <p class="calm">Isso é do negócio, não seu: repor material, pagar curso, trocar a maca, aguentar mês fraco. Se não souber, deixa <b>30%</b>.</p>
-    </div>
-
-    <div class="sep"></div>
-    <p class="sep-t">opcional, mas vale a pena</p>
+  <!-- 3 · ATENDIMENTO -->
+  <section class="step" data-s="3">
+    <p class="kicker">03 · esse atendimento</p>
+    <h1>Como é esse atendimento hoje?</h1>
+    <p class="lede">Três respostas rápidas. <strong>Chute honesto vale</strong> — dá pra corrigir depois e recalcular.</p>
 
     <div class="f">
       <label for="hoje">Quanto você cobra hoje nesse serviço?</label>
+      <p class="help">É com esse número que a gente compara o resto.</p>
       <div class="money"><span class="rs">R$</span><input type="number" id="hoje" inputmode="decimal" min="0" max="2000" placeholder="Ex: 120"></div>
-      <p class="calm">Com esse número a gente te mostra quanto você está deixando na mesa por mês. Se está começando agora, deixa em branco.</p>
+      <p class="calm">Se ainda não cobra ou está começando agora, deixa em branco.</p>
     </div>
 
-    <button class="btn" id="go" disabled>Ver meu preço</button>
-  </div>
+    <div class="f">
+      <label>Quanto tempo ele ocupa da sua agenda?</label>
+      <p class="help">Do oi ao tchau: preparo, aplicação, limpeza e o tempo de arrumar a maca pra próxima.</p>
+      <div class="chips" id="gTempo">
+        <button class="chip" data-v="1">1h</button>
+        <button class="chip" data-v="1.5">1h30</button>
+        <button class="chip" data-v="2">2h</button>
+        <button class="chip" data-v="2.5">2h30</button>
+        <button class="chip" data-v="3">3h</button>
+        <button class="chip" data-v="3.5">3h30+</button>
+      </div>
+      <p class="calm" id="tempoCalm">Se aplica em 1h30 e leva mais 15 minutinhos organizando tudo, marca 2h.</p>
+    </div>
 
-  <!-- ---------- RESULTADO ---------- -->
-  <div id="res">
+    <div class="f">
+      <label for="material">Quanto sai de material nessa aplicação?</label>
+      <p class="help">Fios, cola, primer, pad, fita, descartáveis — o que some a cada cliente.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="material" inputmode="decimal" min="0" max="300" placeholder="Ex: 15"></div>
+      <p class="calm">Quase ninguém sabe esse número de cabeça. A maioria fica entre R$ 10 e R$ 25 — se não souber, deixa em branco que a gente usa R$ 15.</p>
+    </div>
+
+    <div class="nav">
+      <button class="ghost" data-back="2">← Voltar</button>
+      <button class="btn" id="go3">Continuar</button>
+    </div>
+  </section>
+
+  <!-- 4 · ROTINA -->
+  <section class="step" data-s="4">
+    <p class="kicker">04 · a sua rotina</p>
+    <h1>Agora a parte que quase ninguém faz</h1>
+    <p class="lede">É isso que mostra se o seu preço <strong>paga o seu trabalho</strong> ou só cobre o material. Se travar em algum campo, pula — a gente usa um valor comum.</p>
+
+    <div class="f">
+      <label for="meta">Quanto você quer tirar por mês pra você?</label>
+      <p class="help">O que sobra no seu bolso, depois de pagar as contas do trabalho. É o seu salário.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="meta" inputmode="decimal" min="0" max="100000" placeholder="Ex: 4000"></div>
+      <p class="calm">Não é o que você tira hoje — é o que você quer tirar. Pensa num número que faz sentido, não no sonho.</p>
+    </div>
+
+    <div class="f">
+      <label for="fixos">As contas fixas do trabalho, somadas</label>
+      <p class="help">Aluguel da sala, luz, internet, sistema de agendamento, contador, o que você paga todo mês.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="fixos" inputmode="decimal" min="0" max="100000" placeholder="Ex: 0"></div>
+      <p class="calm">Atende em casa e não separa nada disso? Deixa zero mesmo. Não tem problema nenhum.</p>
+    </div>
+
+    <div class="f">
+      <label>Quantos dias por semana você atende?</label>
+      <div class="chips" id="gDias">
+        <button class="chip" data-v="2">2</button><button class="chip" data-v="3">3</button>
+        <button class="chip" data-v="4">4</button><button class="chip on" data-v="5">5</button>
+        <button class="chip" data-v="6">6</button>
+      </div>
+    </div>
+
+    <div class="f">
+      <label>E quantas horas por dia?</label>
+      <p class="help">Sua rotina normal, não a semana perfeita.</p>
+      <div class="chips" id="gHoras">
+        <button class="chip" data-v="3">3h</button><button class="chip" data-v="4">4h</button>
+        <button class="chip" data-v="6">6h</button><button class="chip on" data-v="8">8h</button>
+        <button class="chip" data-v="10">10h</button>
+      </div>
+    </div>
+
+    <div class="why">
+      <b>Por que a gente não usa todas as horas</b>
+      <p>Porque tem cliente que atrasa, cliente que desmarca em cima da hora e aquele buraco de 40 minutos entre uma e outra. A gente conta 3 de cada 4 horas como hora que realmente vira dinheiro — assim o preço sai realista.</p>
+    </div>
+
+    <div class="nav">
+      <button class="ghost" data-back="3">← Voltar</button>
+      <button class="btn" id="go4">Ver meu preço</button>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section class="step" data-s="r">
     <div class="head">
       <p class="lead" id="rLead">Você deveria cobrar</p>
       <p class="price" id="rPrice">—</p>
@@ -266,7 +339,7 @@
       </div>
       <div class="speech" id="rSpeech">—</div>
       <div class="copyrow"><button class="copy" id="rCopy">Copiar</button><span class="copied" id="rCopied">Copiado ✓</span></div>
-      <p class="foot">Nenhum desses dá desconto. Todos oferecem uma opção mais barata — porque desconto ensina a cliente a pedir desconto na próxima.</p>
+      <p class="foot">Nenhum desses textos dá desconto. Todos oferecem uma opção mais barata — porque desconto ensina a cliente a pedir desconto na próxima.</p>
     </div>
 
     <details open>
@@ -281,38 +354,47 @@
     </details>
 
     <details>
-      <summary>De onde saiu esse número</summary>
+      <summary>Ajustar os meus números</summary>
       <div class="inner">
-        <div class="line"><span class="k">Seu mínimo (material + hora + lucro)</span><span class="v" id="sPiso">—</span></div>
-        <div class="line"><span class="k">Preço do meio na sua cidade</span><span class="v" id="sMed">—</span></div>
-        <div class="line"><span class="k">Faixa que a sua cidade paga</span><span class="v" id="sFaixa">—</span></div>
-        <div class="line"><span class="k">Sobra por atendimento</span><span class="v" id="sLucro">—</span></div>
-        <p class="foot">A faixa vem de mais de 30 preços que profissionais publicaram em 12 cidades, em julho — não é tabela de blog. No Norte e Nordeste temos menos dado; se você atende lá, corrige no campo abaixo.</p>
-        <div class="f" style="margin:14px 0 0">
+        <p class="foot" style="margin:0 0 13px" id="rAssume"></p>
+        <div class="f" style="margin-bottom:13px">
           <label for="cMercado">O que cobram na sua cidade por esse serviço</label>
+          <p class="help">Olha 3 perfis parecidos com o seu na sua cidade e põe o valor do meio. Isso vale mais que qualquer estimativa nossa.</p>
           <div class="money"><span class="rs">R$</span><input type="number" id="cMercado" inputmode="decimal" min="0" max="3000" placeholder="Ex: 140"></div>
-          <p class="calm">Olha 3 perfis parecidos com o seu e põe o do meio. Isso vale mais que qualquer estimativa nossa.</p>
         </div>
-        <button class="btn" id="cRecalc" style="margin-top:4px">Recalcular com esse valor</button>
+        <button class="btn wide" id="cRecalc">Recalcular</button>
       </div>
     </details>
 
-    <button class="again" id="rAgain">↺ Mudar minhas respostas</button>
-  </div>
+    <details>
+      <summary>De onde saiu esse número</summary>
+      <div class="inner">
+        <div class="line"><span class="k">Preço do meio na sua cidade</span><span class="v" id="sMed">—</span></div>
+        <div class="line"><span class="k">Faixa que a sua cidade paga</span><span class="v" id="sFaixa">—</span></div>
+        <div class="line"><span class="k">O mínimo que fecha a sua conta</span><span class="v" id="sPiso">—</span></div>
+        <div class="line"><span class="k">Quanto custa uma hora sua</span><span class="v" id="sHora">—</span></div>
+        <p class="foot">A faixa vem de mais de 30 preços que profissionais de verdade publicaram em 12 cidades, em julho. Não é chute nem tabela de blog. No Norte e no Nordeste a gente tem menos dado — se você atende lá, usa o campo de cima pra corrigir.</p>
+      </div>
+    </details>
+
+    <button class="again" id="rAgain">↺ Calcular outro serviço</button>
+  </section>
 </div>
 
 <script>
 (function () {
   "use strict";
 
-  var TAXA = 0.05;                // maquininha / imposto medio
+  var TAXA = 0.05, RESERVA = 0.10, OCUPACAO = 0.75, SEMANAS = 4.33;
   var MANUT = { d15:0.54, d21:0.64, d22:0.70 };
   var TETO_MANUT = 0.85, TETO_REMOCAO = 0.45;
   var TEMPO_MANUT = 0.55, BASE_REMOCAO = 45, TEMPO_REMOCAO = 0.5;
 
-  var A = { tecnica:null, praca:null, tempo:2, material:15, hora:40, margem:0.30,
-            hoje:0, mercadoCustom:0, atendimentos:20, momento:0.55 };
+  var A = { tecnica:null, praca:null, hoje:0, tempo:2, material:15,
+            prolabore:4000, fixos:0, diasSemana:5, horasDia:8,
+            mercadoCustom:0, atendimentos:20, momento:0.55 };
   var tecNome = "", tecKey = "brasileiro", tempoPadrao = 2, tempoTocado = false;
+  var PASSOS = ["1","2","3","4","r"];
 
   function el(id) { return document.getElementById(id); }
   function brl(v) { return "R$ " + Math.round(v).toLocaleString("pt-BR"); }
@@ -320,53 +402,28 @@
   function tTxt(t) { return t===1?"1h":t===1.5?"1h30":t===2?"2h":t===2.5?"2h30":t===3?"3h":"3h30"; }
   function num(id, fb) { var v = parseFloat(el(id).value); return isNaN(v) || v < 0 ? fb : v; }
 
-  // ---------- o cálculo ----------
-  // PISO: o modelo do amigo — material + a hora dela + lucro, e a taxa da maquininha por fora.
-  // TETO: o que a cidade dela paga, dos preços reais coletados.
-  // O piso sozinho é desejo (pede R$200/h e ele estoura); o teto é o freio.
-  function compute() {
-    var base = A.tecnica || 148, praca = A.praca || 1;
-    var tempo = A.tempo, material = A.material, hora = A.hora, margem = A.margem;
-
-    var mediana = A.mercadoCustom > 0 ? A.mercadoCustom : base * praca;
-    var mercadoMin = mediana * 0.85, mercadoMax = mediana * 1.25;
-
-    var custoDireto = material + hora * tempo;
-    var piso = custoDireto * (1 + margem) / (1 - TAXA);
-
-    var chao = Math.max(piso, mercadoMin);
-    var conflito = chao >= mercadoMax;
-    var recomendado = conflito ? mercadoMax : chao + A.momento * (mercadoMax - chao);
-
-    var tempoManut = Math.max(0.75, tempo * TEMPO_MANUT);
-    var pisoManut = (material * 0.5 + hora * tempoManut) * (1 + margem) / (1 - TAXA);
-    var tetoManut = recomendado * TETO_MANUT;
-    function mnt(p) { return Math.min(Math.max(recomendado * p, pisoManut), tetoManut); }
-    var pisoRemocao = (5 + hora * TEMPO_REMOCAO) * (1 + margem) / (1 - TAXA);
-
-    return {
-      base:base, praca:praca, mediana:mediana, mercadoMin:mercadoMin, mercadoMax:mercadoMax,
-      custoDireto:custoDireto, piso:piso, recomendado:recomendado, conflito:conflito,
-      tempo:tempo, material:material, hora:hora, margem:margem, custom:A.mercadoCustom > 0,
-      sobra: recomendado * (1 - TAXA) - custoDireto,
-      manut:{ d15:mnt(MANUT.d15), d21:mnt(MANUT.d21), d22:mnt(MANUT.d22) },
-      pisoManut:pisoManut, tempoManut:tempoManut, manutNoTeto: pisoManut >= tetoManut,
-      remocao: Math.min(Math.max(pisoRemocao, BASE_REMOCAO * praca), recomendado * TETO_REMOCAO)
-    };
+  function show(s) {
+    var all = document.querySelectorAll(".step");
+    for (var i = 0; i < all.length; i++) all[i].classList.remove("on");
+    document.querySelector('[data-s="' + s + '"]').classList.add("on");
+    var idx = PASSOS.indexOf(s);
+    el("stepno").textContent = s === "r" ? "" : (idx + 1) + " de 4";
+    el("rail").style.width = ((idx + 1) / PASSOS.length * 100) + "%";
+    window.scrollTo({ top:0, behavior:"auto" });
   }
 
-  // ---------- entradas ----------
-  function pick(id, fn) {
-    var box = el(id), btns = box.querySelectorAll(".chip");
+  function pick(boxId, fn, avanca) {
+    var box = el(boxId), btns = box.querySelectorAll(".opt, .chip");
     for (var i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", function () {
         for (var k = 0; k < btns.length; k++) btns[k].classList.remove("on");
         this.classList.add("on");
         fn(this);
-        checa();
+        if (avanca) { var b = this; setTimeout(function () { show(avanca); }, 160); }
       });
     }
   }
+
   pick("gTec", function (b) {
     A.tecnica = parseFloat(b.getAttribute("data-v"));
     tecNome = b.getAttribute("data-n");
@@ -378,34 +435,74 @@
       for (var i = 0; i < chips.length; i++) {
         chips[i].classList.toggle("on", parseFloat(chips[i].getAttribute("data-v")) === tempoPadrao);
       }
-      el("tempoCalm").innerHTML = "Já marcamos <b>" + tTxt(tempoPadrao) +
-        "</b>, que é o mais comum nesse serviço. Se o seu é diferente, muda aí.";
+      el("tempoCalm").textContent = "Já deixamos marcado " + tTxt(tempoPadrao) +
+        ", que é o mais comum nesse serviço. Se o seu é diferente, muda aí.";
     }
-  });
-  pick("gTempo", function (b) { A.tempo = parseFloat(b.getAttribute("data-v")); tempoTocado = true; });
-  pick("gMargem", function (b) { A.margem = parseFloat(b.getAttribute("data-v")); });
-  el("praca").addEventListener("change", function () { A.praca = parseFloat(this.value) || null; checa(); });
-  function checa() { el("go").disabled = !(A.tecnica && A.praca); }
+  }, "2");
 
-  el("go").addEventListener("click", function () {
-    A.material = num("material", 15);
-    A.hora = num("hora", 40);
+  pick("gCidade", function (b) { A.praca = parseFloat(b.getAttribute("data-v")); }, "3");
+  pick("gTempo", function (b) { A.tempo = parseFloat(b.getAttribute("data-v")); tempoTocado = true; });
+  pick("gDias", function (b) { A.diasSemana = parseFloat(b.getAttribute("data-v")); });
+  pick("gHoras", function (b) { A.horasDia = parseFloat(b.getAttribute("data-v")); });
+
+  var backs = document.querySelectorAll("[data-back]");
+  for (var i = 0; i < backs.length; i++) {
+    backs[i].addEventListener("click", function () { show(this.getAttribute("data-back")); });
+  }
+
+  el("go3").addEventListener("click", function () {
     A.hoje = num("hoje", 0);
-    el("form").classList.add("off");
-    el("res").classList.add("on");
-    render();
-    window.scrollTo({ top:0, behavior:"auto" });
+    A.material = num("material", 15);
+    show("4");
   });
+
+  el("go4").addEventListener("click", function () {
+    A.prolabore = num("meta", 4000);
+    A.fixos = num("fixos", 0);
+    show("r");
+    render();
+  });
+
   el("cRecalc").addEventListener("click", function () {
     A.mercadoCustom = num("cMercado", 0);
     render();
     window.scrollTo({ top:0, behavior:"smooth" });
   });
-  el("rAgain").addEventListener("click", function () {
-    el("res").classList.remove("on");
-    el("form").classList.remove("off");
-    window.scrollTo({ top:0, behavior:"auto" });
-  });
+
+  el("rAgain").addEventListener("click", function () { show("1"); });
+
+  // ---------- motor (idêntico ao validado na v3/v4) ----------
+  function compute() {
+    var base = A.tecnica || 148, praca = A.praca || 1;
+    var tempo = A.tempo, material = A.material;
+
+    var mediana = A.mercadoCustom > 0 ? A.mercadoCustom : base * praca;
+    var mercadoMin = mediana * 0.85, mercadoMax = mediana * 1.25;
+
+    var horasProd = A.diasSemana * SEMANAS * A.horasDia * OCUPACAO;
+    var custoHora = horasProd > 0 ? (A.prolabore + A.fixos) / horasProd : 0;
+    var custoDireto = custoHora * tempo + material;
+    var piso = custoDireto / (1 - TAXA - RESERVA);
+
+    var chao = Math.max(piso, mercadoMin);
+    var conflito = chao >= mercadoMax;
+    var recomendado = conflito ? mercadoMax : chao + A.momento * (mercadoMax - chao);
+
+    var tempoManut = Math.max(0.75, tempo * TEMPO_MANUT);
+    var pisoManut = (custoHora * tempoManut + material * 0.5) / (1 - TAXA - RESERVA);
+    var tetoManut = recomendado * TETO_MANUT;
+    function mnt(p) { return Math.min(Math.max(recomendado * p, pisoManut), tetoManut); }
+    var pisoRemocao = (custoHora * TEMPO_REMOCAO + 5) / (1 - TAXA - RESERVA);
+
+    return {
+      base:base, praca:praca, mediana:mediana, mercadoMin:mercadoMin, mercadoMax:mercadoMax,
+      custoHora:custoHora, piso:piso, recomendado:recomendado, conflito:conflito,
+      tempo:tempo, material:material, custom:A.mercadoCustom > 0,
+      manut:{ d15:mnt(MANUT.d15), d21:mnt(MANUT.d21), d22:mnt(MANUT.d22) },
+      pisoManut:pisoManut, tempoManut:tempoManut, manutNoTeto: pisoManut >= tetoManut,
+      remocao: Math.min(Math.max(pisoRemocao, BASE_REMOCAO * praca), recomendado * TETO_REMOCAO)
+    };
+  }
 
   // ---------- textos pra cliente ----------
   function scripts(c) {
@@ -440,7 +537,7 @@
     function ok() { el("rCopied").classList.add("on"); setTimeout(function () { el("rCopied").classList.remove("on"); }, 2200); }
     function fb() {
       var ta = document.createElement("textarea");
-      ta.value = txt; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+      ta.value = txt; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
       document.body.appendChild(ta); ta.select();
       try { document.execCommand("copy"); ok(); } catch (e) {}
       document.body.removeChild(ta);
@@ -453,26 +550,26 @@
     var v = el("rVerdict");
     if (c.conflito) {
       v.className = "verdict alert";
-      v.innerHTML = "<h3>Esse valor por hora não cabe na sua cidade</h3><p>Cobrando <strong>" + brl(c.hora) +
-        "</strong> por hora com " + Math.round(c.margem * 100) + "% de lucro, esse serviço teria que sair por <strong>" +
-        brl(c.piso) + "</strong> — e o máximo que a sua cidade paga é <strong>" + brl(c.mercadoMax) +
-        "</strong>.<span class='big'>" + brl(c.mercadoMax) + "</span>é o teto realista. Pra chegar no que você quer ganhar por hora, o caminho não é a tabela: é aplicar mais rápido, gastar menos material ou mudar de público.</p>";
+      v.innerHTML = "<h3>O seu problema não é o preço</h3><p>Pra sustentar a sua rotina você precisaria de <strong>" +
+        brl(c.piso) + "</strong> nesse serviço, mas a sua cidade paga no máximo <strong>" + brl(c.mercadoMax) +
+        "</strong>. Cobrar acima disso só vai esvaziar a sua agenda.<span class='big'>" + brl(c.custoHora) +
+        "/h</span>é quanto custa uma hora sua hoje. Ou a conta fixa está pesada demais, ou a agenda está curta demais, ou a aplicação está demorando demais. Mexe nisso antes de mexer na tabela.</p>";
       return;
     }
     if (hoje > 0 && hoje < c.piso) {
       v.className = "verdict alert";
-      v.innerHTML = "<h3>Nesse preço você trabalha quase de graça</h3><p>Você cobra <strong>" + brl(hoje) +
-        "</strong>. Só o material e a sua hora já dão <strong>" + brl(c.piso) +
-        "</strong>.<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
+      v.innerHTML = "<h3>Nesse preço, você está pagando pra trabalhar</h3><p>Você cobra <strong>" + brl(hoje) +
+        "</strong>. Só o seu tempo e o material já custam <strong>" + brl(c.piso) +
+        "</strong> — o resto sai do seu bolso.<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
         "</span>é o que fica pra trás por mês, contando 20 atendimentos. Sem atender ninguém a mais.</p>";
       return;
     }
     if (hoje > 0 && hoje < c.recomendado) {
       v.className = "verdict gain";
       v.innerHTML = "<h3>Cabe subir " + Math.round((c.recomendado - hoje) / hoje * 100) + "%</h3><p>Você cobra <strong>" +
-        brl(hoje) + "</strong> e a sua cidade paga <strong>" + brl(c.recomendado) + "</strong> nesse serviço." +
+        brl(hoje) + "</strong> e a sua cidade paga <strong>" + brl(c.recomendado) + "</strong> por esse serviço." +
         "<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
-        "</span>a mais por mês, em 20 atendimentos — com as clientes que você já tem.</p>";
+        "</span>a mais por mês, em 20 atendimentos — com as mesmas clientes que você já tem.</p>";
       return;
     }
     if (hoje > 0 && hoje >= c.mercadoMax) {
@@ -484,13 +581,13 @@
     if (hoje > 0) {
       v.className = "verdict ok";
       v.innerHTML = "<h3>Seu preço está de pé</h3><p>Cobrando <strong>" + brl(hoje) +
-        "</strong> você cobre o seu mínimo e está dentro do que a sua cidade paga. O próximo degrau é <strong>" +
+        "</strong> você cobre a sua conta e está dentro do que a sua cidade paga. O próximo degrau é <strong>" +
         brl(c.mercadoMax) + "</strong> — e ele se conquista com prova, não com tabela.</p>";
       return;
     }
     v.className = "verdict ok";
-    v.innerHTML = "<h3>Abaixo de " + brl(c.piso) + " não compensa</h3><p>Esse é o mínimo pra cobrir o material, a sua hora e o lucro que você pediu. O teto da sua cidade é <strong>" +
-      brl(c.mercadoMax) + "</strong> — é entre os dois que você tem espaço.</p>";
+    v.innerHTML = "<h3>Abaixo de " + brl(c.piso) + " não compensa</h3><p>Esse é o mínimo que cobre o seu tempo e o material nesse serviço. O teto da sua cidade é <strong>" +
+      brl(c.mercadoMax) + "</strong> — é entre esses dois que você tem espaço pra se posicionar.</p>";
   }
 
   function ruler(c, hoje) {
@@ -510,7 +607,7 @@
     el("rHigh").textContent = brl(hi);
     el("rulerFoot").textContent = hoje > 0
       ? "A marca dourada é o que você cobra hoje. A verde é onde dá pra chegar. A parte riscada é prejuízo."
-      : "A faixa verde é o que a sua cidade paga nesse serviço. A parte riscada é prejuízo.";
+      : "A faixa verde é o que a sua cidade paga por esse serviço. A parte riscada é prejuízo.";
   }
 
   function render() {
@@ -528,13 +625,17 @@
     el("rM22").textContent = brl(r5(c.manut.d22));
     el("rRem").textContent = brl(r5(c.remocao));
     el("rServFoot").innerHTML = c.manutNoTeto
-      ? "<strong>Olha só:</strong> com esse valor por hora, a manutenção sairia quase o preço da aplicação inteira. Quando chega nesse ponto, cobra reaplicação mesmo."
-      : "Cliente que volta com 25 dias dá quase o trabalho de uma aplicação nova — por isso o valor sobe conforme o tempo passa. Preço único pra qualquer prazo é trabalhar de graça pra quem enrola. A remoção é estimativa: é o único valor que não achamos publicado.";
+      ? "<strong>Olha só:</strong> do jeito que a sua conta está, a manutenção sairia quase o preço da aplicação inteira. Quando chega nesse ponto, cobra reaplicação mesmo."
+      : "Cliente que volta com 25 dias dá quase o mesmo trabalho de uma aplicação nova — por isso o valor sobe conforme o tempo passa. Cobrar um preço só pra qualquer prazo é trabalhar de graça na cliente que enrola. O valor da remoção é estimativa: é o único que a gente não achou publicado.";
 
-    el("sPiso").textContent = brl(c.piso);
+    el("rAssume").innerHTML = "A conta usou <strong>" + tTxt(c.tempo) + "</strong> de atendimento, <strong>" +
+      brl(c.material) + "</strong> de material, meta de <strong>" + brl(A.prolabore) + "</strong> por mês e <strong>" +
+      A.diasSemana + " dias de " + A.horasDia + "h</strong>. Se errou alguma coisa, é só voltar nos passos.";
+
     el("sMed").textContent = brl(c.mediana) + (c.custom ? " (seu)" : "");
     el("sFaixa").textContent = brl(c.mercadoMin) + " – " + brl(c.mercadoMax);
-    el("sLucro").textContent = brl(c.sobra);
+    el("sPiso").textContent = brl(c.piso);
+    el("sHora").textContent = brl(c.custoHora) + "/h";
 
     cur = scripts(c);
     var sel = el("rTabs").querySelector(".tab.on");
