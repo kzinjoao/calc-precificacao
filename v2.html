@@ -436,7 +436,6 @@
   }
   .line:last-of-type { border-bottom:none; padding-bottom:2px; }
   .line .k { font-size:14px; color:var(--ink-2); }
-  .line .k small { display:block; font-size:12px; color:var(--muted); }
   .line .v {
     font-family:var(--mono); font-size:15.5px; font-weight:600;
     font-variant-numeric:tabular-nums; letter-spacing:-.02em;
@@ -470,95 +469,6 @@
   .diag.ok h4 { color:var(--accent-ink); }
   .diag.ok p  { color:var(--ink-2); }
 
-  /* ---------- dica de negócio ---------- */
-  .tip {
-    margin-top:15px;
-    border-left:3px solid var(--gold);
-    background:var(--gold-soft);
-    border-radius:0 var(--r-md) var(--r-md) 0;
-    padding:14px 16px;
-  }
-  .tip .lbl {
-    font-size:11px; letter-spacing:.13em; text-transform:uppercase;
-    color:var(--gold); font-weight:700; display:block; margin-bottom:5px;
-  }
-  .tip p { margin:0; font-size:14px; line-height:1.5; color:var(--ink-2); }
-
-  /* ---------- scripts de objeção ---------- */
-  .scripts { border:1px solid var(--line-2); }
-  .scripts h3 { color:var(--accent-ink); }
-  .scripts .why { font-size:13.5px; color:var(--ink-2); margin:0 0 15px; line-height:1.5; }
-  .tabs { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:14px; }
-  .tab {
-    background:var(--surface-2);
-    border:1.5px solid var(--line);
-    border-radius:99px;
-    padding:8px 14px;
-    font-family:inherit; font-size:13px;
-    color:var(--ink-2);
-    cursor:pointer;
-    transition:border-color .16s, background .16s;
-    text-align:left;
-  }
-  .tab:hover { border-color:var(--line-2); }
-  .tab.selected { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); font-weight:650; }
-  .speech {
-    background:var(--surface-2);
-    border:1px solid var(--line);
-    border-radius:var(--r-md);
-    padding:16px 17px;
-    font-size:14.5px;
-    line-height:1.62;
-    color:var(--ink);
-    white-space:pre-wrap;
-  }
-  .speech em { color:var(--muted); font-style:normal; }
-  .copy-row { display:flex; align-items:center; gap:12px; margin-top:12px; }
-  .copy {
-    background:var(--accent); color:var(--btn-ink);
-    border:none; border-radius:99px;
-    padding:11px 20px;
-    font-family:inherit; font-size:14px; font-weight:650;
-    cursor:pointer;
-    transition:filter .16s, transform .16s;
-  }
-  .copy:hover { filter:brightness(1.07); transform:translateY(-1px); }
-  .copy-msg { font-size:13px; color:var(--accent-ink); opacity:0; transition:opacity .2s; }
-  .copy-msg.on { opacity:1; }
-
-  /* ---------- origem dos números ---------- */
-  details.source {
-    margin-top:15px;
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:var(--r-lg);
-    padding:0;
-    box-shadow:var(--shadow-sm);
-    overflow:hidden;
-  }
-  details.source > summary {
-    list-style:none;
-    cursor:pointer;
-    padding:17px 19px;
-    font-size:13.5px;
-    font-weight:600;
-    color:var(--ink-2);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-  }
-  details.source > summary::-webkit-details-marker { display:none; }
-  details.source > summary::after {
-    content:"+";
-    font-family:var(--mono);
-    color:var(--muted);
-    font-size:17px;
-  }
-  details.source[open] > summary::after { content:"–"; }
-  details.source .inner { padding:0 19px 19px; }
-  .adjust { margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
-
   .restart { text-align:center; margin-top:26px; }
 
   footer {
@@ -586,7 +496,6 @@
     <h1 class="q">Quanto o seu trabalho realmente vale?</h1>
     <p class="hint">Toda calculadora de preço faz metade da conta. Umas olham só o <strong>seu custo</strong> — e mandam quem trabalha em casa cobrar barato. Outras olham só o <strong>mercado</strong> — e ignoram se a conta fecha pra você.</p>
     <p class="hint">Esta faz as duas: descobre o seu <strong>piso</strong> e o <strong>teto da sua praça</strong>, e te posiciona entre eles. Calibrada com preços reais de profissionais em 12 cidades brasileiras.</p>
-    <p class="hint">E no fim ela te dá o que nenhuma tabela dá: <strong>o que responder quando a cliente disser que está caro.</strong></p>
     <div class="nav"><span></span><button class="btn" data-goto="0">Começar</button></div>
   </section>
 
@@ -611,11 +520,11 @@
     <h2 class="q">Qual técnica você quer precificar?</h2>
     <p class="hint">Uma de cada vez. Depois você refaz o cálculo pras outras.</p>
     <div class="options" data-key="tecnica">
-      <button class="opt" data-value="130" data-name="fio a fio" data-tec="fioafio"><span class="t">Fio a fio / Clássico</span></button>
-      <button class="opt" data-value="148" data-name="volume híbrido" data-tec="hibrido"><span class="t">Volume híbrido</span></button>
-      <button class="opt" data-value="148" data-name="volume brasileiro" data-tec="brasileiro"><span class="t">Volume brasileiro</span></button>
-      <button class="opt" data-value="175" data-name="volume russo" data-tec="russo"><span class="t">Volume russo</span></button>
-      <button class="opt" data-value="225" data-name="mega volume" data-tec="mega"><span class="t">Mega volume</span></button>
+      <button class="opt" data-value="130" data-name="fio a fio"><span class="t">Fio a fio / Clássico</span></button>
+      <button class="opt" data-value="140" data-name="volume híbrido"><span class="t">Volume híbrido</span></button>
+      <button class="opt" data-value="155" data-name="volume brasileiro"><span class="t">Volume brasileiro</span></button>
+      <button class="opt" data-value="175" data-name="volume russo"><span class="t">Volume russo</span></button>
+      <button class="opt" data-value="225" data-name="mega volume"><span class="t">Mega volume</span></button>
     </div>
     <div class="nav"><button class="back" data-back="0">← Voltar</button><span></span></div>
   </section>
@@ -776,29 +685,6 @@
 
     <div id="diagSlot"></div>
 
-    <!-- SCRIPTS DE OBJEÇÃO -->
-    <div class="card scripts">
-      <h3>Se ela disser que está caro</h3>
-      <p class="why">O preço só vale se você conseguir sustentar ele na conversa. Escolha a situação, copie e adapte com o seu jeito de falar.</p>
-      <div class="tabs" id="scriptTabs">
-        <button class="tab selected" data-script="caro">“Tá caro”</button>
-        <button class="tab" data-script="concorrente">“Fulana cobra menos”</button>
-        <button class="tab" data-script="aumento">Avisar do aumento</button>
-        <button class="tab" data-script="desconto">Pedido de desconto</button>
-      </div>
-      <div class="speech" id="speechBox">—</div>
-      <div class="copy-row">
-        <button class="copy" id="copyBtn">Copiar</button>
-        <span class="copy-msg" id="copyMsg">Copiado ✓</span>
-      </div>
-      <p class="foot">Nenhum desses textos dá desconto. Todos oferecem <strong>uma opção menor</strong> em vez de baixar o preço — porque desconto ensina a cliente a esperar desconto.</p>
-    </div>
-
-    <div class="tip" id="tipBox">
-      <span class="lbl">Dica de negócio</span>
-      <p id="tipText">—</p>
-    </div>
-
     <div class="card">
       <h3>Seu piso — quanto a sua conta exige</h3>
       <div class="line"><span class="k">Custo da sua hora</span><span class="v" id="vHora">—</span></div>
@@ -810,36 +696,12 @@
     </div>
 
     <div class="card">
-      <h3>Seus outros serviços</h3>
-      <div class="line"><span class="k">Manutenção até 15 dias</span><span class="v" id="m15">—</span></div>
-      <div class="line"><span class="k">Manutenção 16 a 21 dias</span><span class="v" id="m21">—</span></div>
-      <div class="line"><span class="k">Manutenção 22 dias ou mais</span><span class="v" id="m22">—</span></div>
-      <div class="line"><span class="k">Remoção<small>estimativa — sem preço público confiável</small></span><span class="v" id="vRem">—</span></div>
-      <p class="foot" id="servFoot">Manutenção de preço único é pagar pra trabalhar mais: quanto mais tempo passa, mais fio falta e mais trabalho é. Nenhum desses valores desce abaixo do seu piso para o tempo que o serviço ocupa.</p>
+      <h3>Manutenção — escalonada por prazo</h3>
+      <div class="line"><span class="k">Até 15 dias</span><span class="v" id="m15">—</span></div>
+      <div class="line"><span class="k">16 a 21 dias</span><span class="v" id="m21">—</span></div>
+      <div class="line"><span class="k">22 dias ou mais</span><span class="v" id="m22">—</span></div>
+      <p class="foot">Manutenção de preço único é pagar pra trabalhar mais. Quanto mais tempo passa, mais fio falta — e mais trabalho é. As melhores profissionais escalonam.</p>
     </div>
-
-    <details class="source">
-      <summary>De onde vem esse número — e como ajustar</summary>
-      <div class="inner">
-        <div class="line"><span class="k">Base nacional — <span id="srcTec">—</span></span><span class="v" id="srcBase">—</span></div>
-        <div class="line"><span class="k">Ajuste da sua praça</span><span class="v" id="srcPraca">—</span></div>
-        <div class="line"><span class="k">Preço do meio na sua região</span><span class="v" id="srcMediana">—</span></div>
-        <div class="line total"><span class="k">Faixa da sua praça</span><span class="v" id="srcFaixa">—</span></div>
-        <p class="foot">As bases vêm de 30+ preços publicados por profissionais reais em 12 cidades (Booksy, jul/2026). Marketplace puxa para o meio do mercado: o topo premium aparece pouco. <strong>Norte e Nordeste têm amostra fina</strong> — se você atende nessas regiões, o ajuste abaixo vale mais que a nossa base.</p>
-
-        <div class="adjust">
-          <div class="field" style="margin-bottom:10px">
-            <label for="mercadoCustom">O que as profissionais parecidas com você cobram na sua região?</label>
-            <div class="money">
-              <span class="rs">R$</span>
-              <input type="number" id="mercadoCustom" inputmode="decimal" min="0" max="3000" placeholder="—">
-            </div>
-            <p class="sub">Olhe 3 ou 4 perfis do seu nível na sua cidade e coloque o valor do meio. Isso substitui a nossa estimativa pela realidade da sua rua.</p>
-          </div>
-          <button class="btn" id="recalcBtn" style="padding:12px 22px;font-size:14px">Recalcular com esse valor</button>
-        </div>
-      </div>
-    </details>
 
     <div class="restart"><button class="back" id="restart">↺ Refazer o cálculo</button></div>
   </section>
@@ -859,30 +721,14 @@
   var OCUPACAO = 0.75;  // fração da agenda que vira hora faturada
   var SEMANAS = 4.33;
 
-  // manutenção: proporção do preço da aplicação, por janela de dias.
-  // calibrado nos primários: POA 130/150/180 sobre 235 · Blumenau 95/125 sobre 185
-  // · interior PR 70/80 sobre 125. Razão real fica entre 50% e 70%.
-  var MANUT = { d15:0.54, d21:0.64, d22:0.70 };
-  var TETO_MANUT = 0.85;    // acima disso não é manutenção, é reaplicação
-  var TETO_REMOCAO = 0.45;  // remoção não pode custar quase o mesmo que aplicar
-  var TEMPO_MANUT = 0.55;   // manutenção ocupa ~55% do tempo da aplicação
-  var BASE_REMOCAO = 45;    // única referência publicada (ManiPro) — fraca, por isso rotulada
-  var TEMPO_REMOCAO = 0.5;
-
   var A = { atendimentos:20, diasSemana:5, horasDia:8 };
   var tecNome = "";
-  var tecKey = "brasileiro";
   var ORDER = ["intro","0","1","2","3","4","5","6","7","result"];
   var TOTAL = 8;
 
   function el(id) { return document.getElementById(id); }
   function brl(v) { return "R$ " + Math.round(v).toLocaleString("pt-BR"); }
   function r5(v) { return Math.round(v / 5) * 5; }
-
-  function tempoTxt(t) {
-    return t === 1 ? "1h" : t === 1.5 ? "1h30" : t === 2 ? "2h"
-         : t === 2.5 ? "2h30" : t === 3 ? "3h" : "3h30";
-  }
 
   function show(step) {
     var all = document.querySelectorAll(".step");
@@ -923,7 +769,6 @@
           this.classList.add("selected");
           A[key] = parseFloat(this.getAttribute("data-value"));
           if (this.getAttribute("data-name")) tecNome = this.getAttribute("data-name");
-          if (this.getAttribute("data-tec")) tecKey = this.getAttribute("data-tec");
           if (!stay) {
             var step = group.closest(".step").getAttribute("data-step");
             setTimeout(function () { advance(step); }, 170);
@@ -957,29 +802,17 @@
     return isNaN(v) || v < 0 ? fallback : v;
   }
 
-  el("restart").addEventListener("click", function () {
-    A.mercadoCustom = 0;
-    el("mercadoCustom").value = "";
-    show("intro");
-  });
-
-  el("recalcBtn").addEventListener("click", function () {
-    var v = parseFloat(el("mercadoCustom").value);
-    A.mercadoCustom = (isNaN(v) || v <= 0) ? 0 : v;
-    render();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  el("restart").addEventListener("click", function () { show("intro"); });
 
   // ---------- o cálculo ----------
   function compute() {
-    var base = A.tecnica || 148;
+    var base = A.tecnica || 155;
     var praca = A.praca || 1;
     var tempo = A.tempo || 2;
     var material = A.material == null ? 15 : A.material;
 
-    // TETO — o que a praça paga.
-    // se ela informou o preço praticado na região dela, esse valor manda na nossa base.
-    var mediana = A.mercadoCustom > 0 ? A.mercadoCustom : base * praca;
+    // TETO — o que a praça paga
+    var mediana = base * praca;
     var mercadoMin = mediana * 0.85;
     var mercadoMax = mediana * 1.25;
 
@@ -996,33 +829,11 @@
     var conflito = chao >= mercadoMax;
     var recomendado = conflito ? mercadoMax : chao + (A.momento || 0.55) * (mercadoMax - chao);
 
-    // ---- serviços derivados ----
-    // manutenção: proporção do preço da aplicação, mas nunca abaixo do piso
-    // do tempo que ela ocupa de fato.
-    // o teto vale aqui também: se o piso da manutenção estoura o preço da
-    // aplicação, o serviço deixou de ser manutenção — quem tem esse problema
-    // tem problema de custo, e é o diagnóstico de conflito que responde.
-    var tempoManut = Math.max(0.75, tempo * TEMPO_MANUT);
-    var pisoManut = (custoHora * tempoManut + material * 0.5) / (1 - TAXA - RESERVA);
-    var tetoManut = recomendado * TETO_MANUT;
-    function manutencao(prop) {
-      return Math.min(Math.max(recomendado * prop, pisoManut), tetoManut);
-    }
-    var manut = { d15: manutencao(MANUT.d15), d21: manutencao(MANUT.d21), d22: manutencao(MANUT.d22) };
-    var manutNoTeto = pisoManut >= tetoManut;
-
-    // remoção: piso do próprio tempo dela contra a única referência publicada
-    var pisoRemocao = (custoHora * TEMPO_REMOCAO + 5) / (1 - TAXA - RESERVA);
-    var remocao = Math.min(Math.max(pisoRemocao, BASE_REMOCAO * praca), recomendado * TETO_REMOCAO);
-
     return {
-      base:base, praca:praca, mediana:mediana, mercadoMin:mercadoMin, mercadoMax:mercadoMax,
+      base:base, mediana:mediana, mercadoMin:mercadoMin, mercadoMax:mercadoMax,
       custoHora:custoHora, custoDireto:custoDireto, piso:piso,
       recomendado:recomendado, conflito:conflito, tempo:tempo, material:material,
-      taxaValor: piso - custoDireto,
-      manut:manut, pisoManut:pisoManut, tempoManut:tempoManut, remocao:remocao,
-      manutNoTeto:manutNoTeto,
-      custom: A.mercadoCustom > 0
+      taxaValor: piso - custoDireto
     };
   }
 
@@ -1125,76 +936,6 @@
     slot.appendChild(d);
   }
 
-  // ---------- dicas de negócio ----------
-  var TIPS = {
-    fioafio: "É a sua técnica de entrada — quem chega por ela costuma ficar. O dinheiro do fio a fio não está na aplicação: está na manutenção a cada 15 ou 21 dias, o ano inteiro. Cobre certo na porta e prenda pela recorrência.",
-    hibrido: "O híbrido é o upsell natural de quem já faz fio a fio com você. Oferecer ele pra sua base atual custa R$ 0 de anúncio e sobe o seu ticket sem uma cliente nova.",
-    brasileiro: "Costuma ser o carro-chefe da agenda. Se é o que você mais faz, é o preço que mais mexe no seu mês — 10% aqui vale mais que 30% numa técnica que você faz duas vezes por mês.",
-    russo: "Técnica avançada e escassa: poucas dominam de verdade. É onde a diferença de domínio justifica preço — e onde uma foto boa de portfólio se paga rápido.",
-    mega: "Seu maior ticket e seu maior bloco de agenda. Reserve o horário condizente e não aceite encaixar correndo: mega apressado vira retrabalho e cliente insatisfeita."
-  };
-
-  // ---------- scripts de objeção ----------
-  function buildScripts(c) {
-    var preco = brl(c.recomendado);
-    var t = tempoTxt(c.tempo);
-
-    var caro = {
-      fioafio: "Eu entendo, e obrigada por falar comigo com sinceridade.\n\nEsse valor é por " + t + " comigo aplicando fio por fio, um em cada cílio seu. Não é um procedimento de 20 minutos — é justamente esse tempo que faz o resultado parecer que nasceu com você, e não colado.\n\nNa prática ele te devolve os minutos de maquiagem de toda manhã, por umas três semanas.\n\nSe agora não couber, me fala que eu te mostro uma opção mais leve pra gente começar. O que eu não faço é entregar menos cuidado pelo mesmo nome.",
-      hibrido: "Eu entendo, e obrigada por me falar.\n\nO híbrido é duas técnicas na mesma aplicação: fio a fio na base pra ficar natural e tufos onde falta preenchimento. É por isso que ele resolve o olhar de quem tem falha e não quer aquele volume pesado.\n\nSão " + t + " de trabalho, e " + preco + " é pelo resultado — não pelo material.\n\nSe quiser um degrau abaixo, o fio a fio puro sai mais em conta. O efeito é outro, mas eu te entrego com o mesmo cuidado.",
-      brasileiro: "Eu entendo, e fico feliz que você tenha perguntado.\n\nO volume brasileiro leva de 3 a 5 fios ultrafinos montados em cada cílio seu, um a um, na hora. São " + t + " pra construir esse volume sem pesar no seu fio natural — e é exatamente isso que separa um trabalho que dura de uma promoção de R$ 60 que cai numa semana.\n\n" + preco + " é pelo resultado que fica de pé até a próxima manutenção.\n\nSe hoje não couber, eu tenho uma opção mais leve pra gente começar.",
-      russo: "Eu entendo, e prefiro te explicar a baixar o preço.\n\nO volume russo é a técnica que menos profissional domina de verdade — e a que mais estraga cílio quando é malfeita. " + preco + " é pelo domínio de montar o leque na pinça, na hora, com o peso certo pro seu fio aguentar.\n\nCílio danificado leva de 3 a 6 meses pra voltar. É o tipo de economia que sai cara.\n\nSe quiser um efeito parecido com um investimento menor, me fala que eu te mostro o brasileiro.",
-      mega: "Eu entendo, e obrigada pela sinceridade.\n\nO mega volume é o maior trabalho que eu faço: " + t + " de cadeira, leques de 8 a 16 fios montados um a um. É o efeito mais marcante que existe — e o que mais exige cuidado pra não sobrecarregar o seu cílio natural.\n\n" + preco + " é por isso.\n\nSe você quer o impacto com um investimento menor, o volume brasileiro é o caminho — e eu te faço com o mesmo cuidado."
-    };
-
-    return {
-      caro: caro[tecKey] || caro.brasileiro,
-
-      concorrente: "Eu sei que tem lugar cobrando menos, e eu não vou falar mal de ninguém.\n\nO que eu posso te dizer é o que está no meu preço: material que eu escolho e testo, o tempo que a sua aplicação precisa — eu não acelero pra encaixar mais gente no dia — e o cuidado de não danificar o seu cílio natural.\n\nSe em algum momento você quiser comparar, compara o resultado 15 dias depois. É ali que a diferença aparece.\n\nEu vou ficar feliz de te atender quando fizer sentido pra você. 💛",
-
-      aumento: "Oi, [nome]! Tudo bem?\n\nEstou avisando com antecedência: a partir de [data], a " + tecNome + " passa a ser " + preco + ".\n\nFaz tempo que eu não reajusto e, nesse período, material e formação subiram bastante — segurei o quanto deu. Continua tudo igual: o mesmo cuidado, o mesmo tempo reservado só pra você.\n\nSe quiser, dá pra garantir o valor atual agendando ainda este mês.\n\nObrigada por confiar em mim esse tempo todo. 💛",
-
-      desconto: "Eu entendo, de verdade.\n\nEu não trabalho com desconto — não seria justo com as clientes que pagam o valor cheio, e eu prefiro ser previsível com você.\n\nO que eu posso fazer é te oferecer uma opção que cabe melhor agora: [técnica mais leve] por [valor], ou a gente encaixa você na manutenção mais espaçada.\n\nE se preferir esperar pra fazer o completo, seu horário fica guardado. Sem pressa nenhuma. 💛"
-    };
-  }
-
-  var currentScripts = null;
-
-  var tabs = document.querySelectorAll("#scriptTabs .tab");
-  for (var it = 0; it < tabs.length; it++) {
-    tabs[it].addEventListener("click", function () {
-      for (var k = 0; k < tabs.length; k++) tabs[k].classList.remove("selected");
-      this.classList.add("selected");
-      if (currentScripts) {
-        el("speechBox").textContent = currentScripts[this.getAttribute("data-script")];
-      }
-      el("copyMsg").classList.remove("on");
-    });
-  }
-
-  el("copyBtn").addEventListener("click", function () {
-    var txt = el("speechBox").textContent;
-    function ok() {
-      el("copyMsg").classList.add("on");
-      setTimeout(function () { el("copyMsg").classList.remove("on"); }, 2200);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(ok, fallback);
-    } else { fallback(); }
-
-    function fallback() {
-      var ta = document.createElement("textarea");
-      ta.value = txt;
-      ta.setAttribute("readonly", "");
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand("copy"); ok(); } catch (e) {}
-      document.body.removeChild(ta);
-    }
-  });
-
   // ---------- render ----------
   function render() {
     var c = compute();
@@ -1209,7 +950,7 @@
     var pracaTxt = { "1":"capital Sudeste/Sul", "0.95":"interior forte", "0.9":"interior grande/médio",
                      "0.82":"cidade pequena", "0.78":"capital N/NE/CO" }[String(A.praca)] || "";
     var momTxt = { "0.25":"começando", "0.55":"estabelecida", "0.85":"referência" }[String(A.momento)] || "";
-    el("recTag").textContent = pracaTxt + " · " + momTxt + (c.custom ? " · faixa ajustada por você" : "");
+    el("recTag").textContent = pracaTxt + " · " + momTxt;
 
     drawRuler(c, hoje);
     el("rulerFoot").textContent = c.conflito
@@ -1217,31 +958,15 @@
       : "A área hachurada é prejuízo: abaixo do seu piso. A faixa cheia é o que a sua praça paga por " + tecNome + ".";
 
     el("vHora").textContent = brl(c.custoHora) + "/h";
-    el("vTempo").textContent = tempoTxt(c.tempo) + (c.tempo === 3.5 ? "+" : "");
+    el("vTempo").textContent = (c.tempo === 1 ? "1h" : c.tempo === 1.5 ? "1h30" : c.tempo === 2 ? "2h"
+                              : c.tempo === 2.5 ? "2h30" : c.tempo === 3 ? "3h" : "3h30+");
     el("vMat").textContent = brl(c.material);
     el("vTaxa").textContent = brl(c.taxaValor);
     el("vPiso").textContent = brl(c.piso);
 
-    el("m15").textContent = brl(r5(c.manut.d15));
-    el("m21").textContent = brl(r5(c.manut.d21));
-    el("m22").textContent = brl(r5(c.manut.d22)) + " ou reaplicação";
-    el("vRem").textContent = brl(r5(c.remocao));
-    el("servFoot").innerHTML = c.manutNoTeto
-      ? "<strong>Atenção:</strong> pelo seu custo por hora, uma manutenção sairia mais cara que a própria aplicação. Quando a conta chega nesse ponto, o serviço deixou de ser manutenção — cobre reaplicação e resolva o custo antes, é o que o alerta acima explica."
-      : "Manutenção de preço único é pagar pra trabalhar mais: quanto mais tempo passa, mais fio falta e mais trabalho é. Nenhum desses valores desce abaixo do seu piso para o tempo que o serviço ocupa.";
-
-    // origem dos números
-    el("srcTec").textContent = tecNome;
-    el("srcBase").textContent = brl(c.base);
-    el("srcPraca").textContent = "×" + c.praca.toFixed(2).replace(".", ",");
-    el("srcMediana").textContent = brl(c.mediana) + (c.custom ? " (seu)" : "");
-    el("srcFaixa").textContent = brl(c.mercadoMin) + " – " + brl(c.mercadoMax);
-
-    // dica + scripts
-    el("tipText").textContent = TIPS[tecKey] || TIPS.brasileiro;
-    currentScripts = buildScripts(c);
-    var sel = document.querySelector("#scriptTabs .tab.selected");
-    el("speechBox").textContent = currentScripts[sel ? sel.getAttribute("data-script") : "caro"];
+    el("m15").textContent = brl(r5(c.recomendado * 0.52));
+    el("m21").textContent = brl(r5(c.recomendado * 0.62));
+    el("m22").textContent = brl(r5(c.recomendado * 0.70)) + " ou reaplicação";
 
     diagnose(c, hoje);
   }
