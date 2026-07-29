@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quanto cobrar — calculadora lash</title>
+<title>Quanto cobrar — calculadora pra lash designer</title>
 <meta name="description" content="Descubra quanto cobrar pela sua aplicacao de cilios: cruza o seu custo real com o preco praticado na sua regiao.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F6F4F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141210" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="Quanto cobrar — calculadora lash">
+<meta property="og:title" content="Quanto cobrar — calculadora pra lash designer">
 <meta property="og:description" content="Descubra quanto cobrar pela sua aplicacao de cilios: cruza o seu custo real com o preco praticado na sua regiao.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%93%90</text></svg>">
@@ -29,234 +29,293 @@
     --accent:#0E5B4C; --accent-ink:#0A4739; --accent-soft:#E2EFEA;
     --warn:#9E4520; --warn-soft:#FAEBE3;
     --gold:#9C7429; --gold-soft:#F5EEDF;
-    --btn-ink:#FFFFFF;
-    --shadow-sm:0 6px 18px rgba(26,23,20,.06);
+    --btn-ink:#FFFFFF; --shadow-sm:0 6px 18px rgba(26,23,20,.06);
     --r-lg:20px; --r-md:14px;
     --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
-      --paper:#141210; --surface:#1C1A17; --surface-2:#221F1B;
-      --ink:#F3EEE7; --ink-2:#D2CAC0; --muted:#9B9188;
-      --line:#332E28; --line-2:#463F37;
+    :root { --paper:#141210; --surface:#1C1A17; --surface-2:#221F1B;
+      --ink:#F3EEE7; --ink-2:#D2CAC0; --muted:#9B9188; --line:#332E28; --line-2:#463F37;
       --accent:#54C2A6; --accent-ink:#7AD6BE; --accent-soft:#123029;
-      --warn:#E28A5F; --warn-soft:#3A2116;
-      --gold:#D2A657; --gold-soft:#332918;
-      --btn-ink:#0C1A16; --shadow-sm:0 6px 18px rgba(0,0,0,.34);
-    }
+      --warn:#E28A5F; --warn-soft:#3A2116; --gold:#D2A657; --gold-soft:#332918;
+      --btn-ink:#0C1A16; --shadow-sm:0 6px 18px rgba(0,0,0,.34); }
   }
-  :root[data-theme="dark"] {
-    --paper:#141210; --surface:#1C1A17; --surface-2:#221F1B;
-    --ink:#F3EEE7; --ink-2:#D2CAC0; --muted:#9B9188;
-    --line:#332E28; --line-2:#463F37;
+  :root[data-theme="dark"] { --paper:#141210; --surface:#1C1A17; --surface-2:#221F1B;
+    --ink:#F3EEE7; --ink-2:#D2CAC0; --muted:#9B9188; --line:#332E28; --line-2:#463F37;
     --accent:#54C2A6; --accent-ink:#7AD6BE; --accent-soft:#123029;
-    --warn:#E28A5F; --warn-soft:#3A2116;
-    --gold:#D2A657; --gold-soft:#332918;
-    --btn-ink:#0C1A16; --shadow-sm:0 6px 18px rgba(0,0,0,.34);
-  }
-  :root[data-theme="light"] {
-    --paper:#F6F4F0; --surface:#FFFFFF; --surface-2:#FBFAF8;
-    --ink:#1A1714; --ink-2:#453E37; --muted:#7C736A;
-    --line:#E5DFD6; --line-2:#D3CABD;
+    --warn:#E28A5F; --warn-soft:#3A2116; --gold:#D2A657; --gold-soft:#332918;
+    --btn-ink:#0C1A16; --shadow-sm:0 6px 18px rgba(0,0,0,.34); }
+  :root[data-theme="light"] { --paper:#F6F4F0; --surface:#FFFFFF; --surface-2:#FBFAF8;
+    --ink:#1A1714; --ink-2:#453E37; --muted:#7C736A; --line:#E5DFD6; --line-2:#D3CABD;
     --accent:#0E5B4C; --accent-ink:#0A4739; --accent-soft:#E2EFEA;
-    --warn:#9E4520; --warn-soft:#FAEBE3;
-    --gold:#9C7429; --gold-soft:#F5EEDF;
-    --btn-ink:#FFFFFF; --shadow-sm:0 6px 18px rgba(26,23,20,.06);
-  }
+    --warn:#9E4520; --warn-soft:#FAEBE3; --gold:#9C7429; --gold-soft:#F5EEDF;
+    --btn-ink:#FFFFFF; --shadow-sm:0 6px 18px rgba(26,23,20,.06); }
 
   * { box-sizing:border-box; }
-  body {
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:var(--sans); font-size:16px; line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap { max-width:460px; margin:0 auto; padding:26px 18px 56px; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+    font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:470px; margin:0 auto; padding:22px 18px 56px; }
 
-  h1 {
-    font-size:clamp(24px,6.2vw,29px); line-height:1.15;
-    letter-spacing:-.03em; font-weight:700; margin:0 0 6px; text-wrap:balance;
-  }
-  .sub { color:var(--muted); font-size:14.5px; margin:0 0 26px; }
+  .top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .brand { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:650; }
+  .stepno { font-family:var(--mono); font-size:11.5px; color:var(--muted); }
+  .rail { height:3px; background:var(--line); border-radius:99px; overflow:hidden; margin-bottom:24px; }
+  .rail i { display:block; height:100%; width:0; background:var(--accent); border-radius:99px; transition:width .4s cubic-bezier(.22,.7,.3,1); }
 
-  .q { margin-bottom:22px; }
-  .q > label {
-    display:block; font-size:14px; font-weight:650;
-    color:var(--ink-2); margin-bottom:9px;
-  }
+  .step { display:none; }
+  .step.on { display:block; }
+  .kicker { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700; margin:0 0 8px; }
+  h1, h2 { font-size:clamp(22px,5.8vw,27px); line-height:1.18; letter-spacing:-.028em; font-weight:700; margin:0 0 8px; text-wrap:balance; }
+  .lede { color:var(--muted); font-size:14.5px; margin:0 0 20px; }
+  .lede strong { color:var(--ink-2); font-weight:600; }
 
-  .grid { display:flex; flex-wrap:wrap; gap:7px; }
-  .pick {
-    background:var(--surface); border:1.5px solid var(--line);
-    border-radius:99px; padding:10px 15px;
-    font-family:inherit; font-size:14px; color:var(--ink);
-    cursor:pointer; transition:border-color .15s, background .15s;
-  }
-  .pick:hover { border-color:var(--line-2); }
-  .pick.on { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); font-weight:650; }
+  .grid { display:flex; flex-direction:column; gap:8px; }
+  .opt { width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--line);
+    border-radius:var(--r-md); padding:14px 15px; cursor:pointer; font-family:inherit; color:var(--ink);
+    display:flex; flex-direction:column; gap:2px; transition:border-color .15s, box-shadow .15s; }
+  .opt:hover { border-color:var(--line-2); }
+  .opt.on { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .opt .t { font-weight:600; font-size:15px; }
+  .opt .d { font-size:12.5px; color:var(--muted); line-height:1.4; }
 
-  select, input[type="number"] {
-    width:100%; background:var(--surface);
-    border:1.5px solid var(--line); border-radius:var(--r-md);
-    padding:14px 15px; font-family:inherit; font-size:16px; color:var(--ink);
-    transition:border-color .15s, box-shadow .15s;
-  }
-  select { appearance:none; -webkit-appearance:none; cursor:pointer;
-    background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
-    background-position:calc(100% - 19px) 22px, calc(100% - 14px) 22px;
-    background-size:5px 5px, 5px 5px; background-repeat:no-repeat; padding-right:40px; }
-  input[type="number"] { font-family:var(--mono); padding-left:42px; -moz-appearance:textfield; font-variant-numeric:tabular-nums; }
-  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
-  select:focus, input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .chips { display:flex; flex-wrap:wrap; gap:7px; }
+  .chip { background:var(--surface); border:1.5px solid var(--line); border-radius:99px;
+    padding:9px 15px; font-family:var(--mono); font-size:13.5px; color:var(--ink); cursor:pointer;
+    transition:border-color .15s, background .15s; }
+  .chip:hover { border-color:var(--line-2); }
+  .chip.on { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); font-weight:650; }
+
+  .f { margin-bottom:19px; }
+  .f > label { display:block; font-size:14.5px; font-weight:650; color:var(--ink); margin-bottom:4px; }
+  .f .help { font-size:13px; color:var(--muted); margin:0 0 9px; line-height:1.45; }
+  .f .calm { font-size:12.5px; color:var(--accent-ink); margin:7px 0 0; line-height:1.45; }
+  @media (prefers-color-scheme: dark) { .f .calm { color:var(--accent); } }
+
   .money { position:relative; display:flex; align-items:center; }
-  .money .rs { position:absolute; left:15px; font-family:var(--mono); font-size:15px; color:var(--muted); pointer-events:none; }
-  .opt-note { font-size:12.5px; color:var(--muted); margin:7px 0 0; }
+  .money .rs { position:absolute; left:14px; font-family:var(--mono); font-size:15px; color:var(--muted); pointer-events:none; }
+  input[type="number"] { width:100%; background:var(--surface); border:1.5px solid var(--line);
+    border-radius:var(--r-md); padding:13px 14px 13px 40px; font-family:var(--mono); font-size:16.5px;
+    color:var(--ink); font-variant-numeric:tabular-nums; -moz-appearance:textfield; transition:border-color .15s, box-shadow .15s; }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+  input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
   :focus-visible { outline:2.5px solid var(--accent); outline-offset:2px; border-radius:6px; }
 
-  .go {
-    width:100%; background:var(--accent); color:var(--btn-ink);
-    border:none; border-radius:99px; padding:16px;
-    font-family:inherit; font-size:16px; font-weight:680; cursor:pointer;
-    margin-top:6px; transition:filter .15s;
-  }
-  .go:hover { filter:brightness(1.08); }
-  .go[disabled] { opacity:.4; cursor:default; filter:none; }
+  .why { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:13px 15px; margin:16px 0 0; }
+  .why b { display:block; font-size:13px; color:var(--ink-2); margin-bottom:3px; }
+  .why p { margin:0; font-size:13px; color:var(--muted); line-height:1.5; }
 
-  /* ---------- resultado ---------- */
-  #result { display:none; }
-  #result.on { display:block; }
-  #form.off { display:none; }
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:24px; }
+  .btn { background:var(--accent); color:var(--btn-ink); border:none; border-radius:99px;
+    padding:14px 26px; font-family:inherit; font-size:15px; font-weight:670; cursor:pointer; transition:filter .15s; }
+  .btn:hover { filter:brightness(1.08); }
+  .btn.wide { width:100%; }
+  .ghost { background:none; border:none; color:var(--muted); font-family:inherit; font-size:14px; cursor:pointer; padding:8px 2px; }
+  .ghost:hover { color:var(--ink-2); }
 
-  .headline { text-align:center; padding:2px 0 20px; }
-  .headline .lead { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:650; margin:0 0 9px; }
-  .headline .price {
-    font-family:var(--mono); font-size:clamp(40px,12vw,56px); font-weight:600;
-    letter-spacing:-.045em; line-height:1; margin:0; font-variant-numeric:tabular-nums;
-  }
-  .headline .for { color:var(--muted); font-size:13.5px; margin:10px 0 0; }
+  /* resultado */
+  .head { text-align:center; padding:0 0 18px; }
+  .head .lead { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:650; margin:0 0 8px; }
+  .head .price { font-family:var(--mono); font-size:clamp(38px,11.5vw,54px); font-weight:600;
+    letter-spacing:-.045em; line-height:1; margin:0; font-variant-numeric:tabular-nums; }
+  .head .for { color:var(--muted); font-size:13.5px; margin:9px 0 0; }
 
-  .verdict {
-    border-radius:var(--r-lg); padding:17px 18px; border:1px solid; margin-bottom:14px;
-  }
-  .verdict h2 { margin:0 0 5px; font-size:17px; letter-spacing:-.02em; }
+  .verdict { border-radius:var(--r-lg); padding:17px 18px; border:1px solid; margin-bottom:13px; }
+  .verdict h3 { margin:0 0 5px; font-size:16.5px; letter-spacing:-.02em; }
   .verdict p { margin:0; font-size:14px; line-height:1.5; }
-  .verdict .big { font-family:var(--mono); font-size:clamp(26px,7.5vw,33px); font-weight:600; letter-spacing:-.035em; display:block; margin:8px 0 3px; }
+  .verdict .big { font-family:var(--mono); font-size:clamp(25px,7vw,32px); font-weight:600;
+    letter-spacing:-.035em; display:block; margin:8px 0 3px; }
   .verdict.gain { background:var(--gold-soft); border-color:var(--gold); }
-  .verdict.gain h2, .verdict.gain .big { color:var(--gold); }
+  .verdict.gain h3, .verdict.gain .big { color:var(--gold); }
   .verdict.gain p { color:var(--ink-2); }
   .verdict.alert { background:var(--warn-soft); border-color:var(--warn); }
-  .verdict.alert h2, .verdict.alert p, .verdict.alert .big { color:var(--warn); }
+  .verdict.alert h3, .verdict.alert p, .verdict.alert .big { color:var(--warn); }
   .verdict.ok { background:var(--accent-soft); border-color:var(--accent); }
-  .verdict.ok h2 { color:var(--accent-ink); }
+  .verdict.ok h3 { color:var(--accent-ink); }
   .verdict.ok p { color:var(--ink-2); }
 
-  /* régua */
-  .ruler { position:relative; height:34px; margin:4px 0 6px; }
-  .ruler .track { position:absolute; top:14px; left:0; right:0; height:7px; border-radius:99px; background:var(--line); overflow:hidden; }
+  .ruler { position:relative; height:32px; margin:2px 0 4px; }
+  .ruler .track { position:absolute; top:13px; left:0; right:0; height:7px; border-radius:99px; background:var(--line); overflow:hidden; }
   .ruler .band { position:absolute; top:0; bottom:0; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); opacity:.85; }
   .ruler .below { position:absolute; top:0; bottom:0; left:0; background:repeating-linear-gradient(-45deg,var(--warn-soft) 0 5px,transparent 5px 10px); border-right:1.5px solid var(--warn); }
-  .pin { position:absolute; top:6px; width:3px; height:23px; background:var(--accent); border-radius:2px; transform:translateX(-1.5px); }
+  .pin { position:absolute; top:5px; width:3px; height:23px; background:var(--accent); border-radius:2px; transform:translateX(-1.5px); }
   .pin.today { background:var(--gold); width:2px; }
   .ends { display:flex; justify-content:space-between; font-family:var(--mono); font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums; }
 
-  .card {
-    background:var(--surface); border:1px solid var(--line);
-    border-radius:var(--r-lg); padding:17px 18px 15px;
-    margin-top:13px; box-shadow:var(--shadow-sm);
-  }
-  .card h3 { font-size:11.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:0 0 12px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg);
+    padding:17px 18px 15px; margin-top:13px; box-shadow:var(--shadow-sm); }
+  .card h4 { font-size:11.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:0 0 11px; }
 
   .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
-  .tab {
-    background:var(--surface-2); border:1.5px solid var(--line); border-radius:99px;
-    padding:7px 13px; font-family:inherit; font-size:12.5px; color:var(--ink-2); cursor:pointer;
-    transition:border-color .15s, background .15s;
-  }
+  .tab { background:var(--surface-2); border:1.5px solid var(--line); border-radius:99px; padding:7px 13px;
+    font-family:inherit; font-size:12.5px; color:var(--ink-2); cursor:pointer; transition:border-color .15s, background .15s; }
   .tab.on { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); font-weight:650; }
-  .speech {
-    background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-md);
-    padding:15px 16px; font-size:14.5px; line-height:1.6; white-space:pre-wrap;
-  }
-  .copy-row { display:flex; align-items:center; gap:11px; margin-top:11px; }
-  .copy {
-    background:var(--accent); color:var(--btn-ink); border:none; border-radius:99px;
-    padding:10px 19px; font-family:inherit; font-size:13.5px; font-weight:650; cursor:pointer;
-  }
+  .speech { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:15px 16px; font-size:14.5px; line-height:1.6; white-space:pre-wrap; }
+  .copyrow { display:flex; align-items:center; gap:11px; margin-top:11px; }
+  .copy { background:var(--accent); color:var(--btn-ink); border:none; border-radius:99px; padding:10px 19px;
+    font-family:inherit; font-size:13.5px; font-weight:650; cursor:pointer; }
   .copy:hover { filter:brightness(1.08); }
-  .copy-msg { font-size:12.5px; color:var(--accent-ink); opacity:0; transition:opacity .2s; }
-  .copy-msg.on { opacity:1; }
+  .copied { font-size:12.5px; color:var(--accent-ink); opacity:0; transition:opacity .2s; }
+  .copied.on { opacity:1; }
 
   .line { display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid var(--line); }
   .line:last-of-type { border-bottom:none; padding-bottom:1px; }
   .line .k { font-size:13.5px; color:var(--ink-2); }
   .line .v { font-family:var(--mono); font-size:15px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
 
-  details {
-    margin-top:13px; background:var(--surface); border:1px solid var(--line);
-    border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-sm);
-  }
-  details > summary {
-    list-style:none; cursor:pointer; padding:15px 18px;
-    font-size:13.5px; font-weight:600; color:var(--ink-2);
-    display:flex; align-items:center; justify-content:space-between; gap:10px;
-  }
+  details { margin-top:13px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg);
+    overflow:hidden; box-shadow:var(--shadow-sm); }
+  details > summary { list-style:none; cursor:pointer; padding:15px 18px; font-size:13.5px; font-weight:600;
+    color:var(--ink-2); display:flex; align-items:center; justify-content:space-between; gap:10px; }
   details > summary::-webkit-details-marker { display:none; }
   details > summary::after { content:"+"; font-family:var(--mono); color:var(--muted); font-size:16px; }
   details[open] > summary::after { content:"–"; }
   details .inner { padding:0 18px 17px; }
   .foot { font-size:12px; color:var(--muted); margin:11px 0 0; line-height:1.45; }
-  .row2 { display:flex; gap:10px; }
-  .row2 > * { flex:1; }
-  .again { display:block; margin:20px auto 0; background:none; border:none; color:var(--muted); font-family:inherit; font-size:14px; cursor:pointer; }
-  .again:hover { color:var(--ink-2); }
+  .again { display:block; margin:20px auto 0; background:none; border:none; color:var(--muted);
+    font-family:inherit; font-size:14px; cursor:pointer; }
 </style>
 
 <div class="wrap">
-
-  <!-- ---------- PERGUNTAS: uma tela ---------- -->
-  <div id="form">
-    <h1>Quanto você deveria cobrar?</h1>
-    <p class="sub">Três respostas. Sem cadastro.</p>
-
-    <div class="q">
-      <label>1. Qual serviço?</label>
-      <div class="grid" id="gTec">
-        <button class="pick" data-v="130" data-n="fio a fio"    data-k="fioafio"    data-t="1.5">Fio a fio</button>
-        <button class="pick" data-v="148" data-n="híbrido"      data-k="hibrido"    data-t="1.5">Híbrido</button>
-        <button class="pick" data-v="148" data-n="brasileiro"   data-k="brasileiro" data-t="2">Volume brasileiro</button>
-        <button class="pick" data-v="175" data-n="volume russo" data-k="russo"      data-t="2">Volume russo</button>
-        <button class="pick" data-v="225" data-n="mega volume"  data-k="mega"       data-t="3">Mega volume</button>
-      </div>
-    </div>
-
-    <div class="q">
-      <label for="praca">2. Onde você atende?</label>
-      <select id="praca">
-        <option value="">Escolha a sua cidade…</option>
-        <option value="1.00">Capital ou região metro — SP, RJ, BH, Curitiba, POA</option>
-        <option value="0.95">Interior rico do Sul/Sudeste — Blumenau, Ribeirão</option>
-        <option value="0.90">Cidade média do interior — Campinas, Juiz de Fora</option>
-        <option value="0.82">Cidade pequena ou periferia</option>
-        <option value="0.78">Capital do Norte, Nordeste ou Centro-Oeste</option>
-      </select>
-    </div>
-
-    <div class="q">
-      <label for="hoje">3. Quanto você cobra hoje?</label>
-      <div class="money">
-        <span class="rs">R$</span>
-        <input type="number" id="hoje" inputmode="decimal" min="0" max="2000" placeholder="90">
-      </div>
-      <p class="opt-note">Se ainda não cobra, deixe em branco.</p>
-    </div>
-
-    <button class="go" id="go" disabled>Ver meu preço</button>
+  <div class="top">
+    <span class="brand">Quanto cobrar</span>
+    <span class="stepno" id="stepno"></span>
   </div>
+  <div class="rail"><i id="rail"></i></div>
 
-  <!-- ---------- RESULTADO ---------- -->
-  <div id="result">
-    <div class="headline">
-      <p class="lead" id="rLead">Seu preço</p>
+  <!-- 1 · SERVIÇO -->
+  <section class="step on" data-s="1">
+    <p class="kicker">01 · o serviço</p>
+    <h1>Qual serviço você quer calcular agora?</h1>
+    <p class="lede">Começa pelo que você mais faz na semana. Depois dá pra voltar e calcular os outros.</p>
+    <div class="grid" id="gTec">
+      <button class="opt" data-v="130" data-n="fio a fio" data-k="fioafio" data-t="1.5"><span class="t">Fio a fio / clássico</span></button>
+      <button class="opt" data-v="148" data-n="híbrido" data-k="hibrido" data-t="1.5"><span class="t">Híbrido</span></button>
+      <button class="opt" data-v="148" data-n="volume brasileiro" data-k="brasileiro" data-t="2"><span class="t">Volume brasileiro</span></button>
+      <button class="opt" data-v="175" data-n="volume russo" data-k="russo" data-t="2"><span class="t">Volume russo</span></button>
+      <button class="opt" data-v="225" data-n="mega volume" data-k="mega" data-t="3"><span class="t">Mega volume</span></button>
+    </div>
+    <div class="why">
+      <b>A manutenção sai junto</b>
+      <p>Você não precisa calcular manutenção e remoção separado — no fim elas aparecem prontas, com base nesse serviço.</p>
+    </div>
+  </section>
+
+  <!-- 2 · CIDADE -->
+  <section class="step" data-s="2">
+    <p class="kicker">02 · a sua cidade</p>
+    <h1>Onde você atende?</h1>
+    <p class="lede">A mesma aplicação não vale o mesmo em toda cidade. Escolhe a que mais parece com a sua.</p>
+    <div class="grid" id="gCidade">
+      <button class="opt" data-v="1.00"><span class="t">Capital ou região metropolitana do Sul/Sudeste</span><span class="d">São Paulo, Rio, BH, Curitiba, Porto Alegre</span></button>
+      <button class="opt" data-v="0.95"><span class="t">Cidade do interior com dinheiro girando</span><span class="d">Blumenau, Joinville, Ribeirão Preto</span></button>
+      <button class="opt" data-v="0.90"><span class="t">Cidade média do interior</span><span class="d">Campinas, Juiz de Fora, Londrina</span></button>
+      <button class="opt" data-v="0.82"><span class="t">Cidade pequena ou bairro de periferia</span><span class="d">Público que pesa mais o preço</span></button>
+      <button class="opt" data-v="0.78"><span class="t">Capital do Norte, Nordeste ou Centro-Oeste</span><span class="d">Salvador, Fortaleza, Goiânia, Cuiabá, Manaus</span></button>
+    </div>
+    <div class="why">
+      <b>Por que a gente pergunta isso</b>
+      <p>Tabela pronta da internet costuma dar um preço só pro Brasil inteiro. Aí a menina de Goiânia recebe preço de São Paulo, tenta cobrar e a cliente some.</p>
+    </div>
+    <div class="nav"><button class="ghost" data-back="1">← Voltar</button><span></span></div>
+  </section>
+
+  <!-- 3 · ATENDIMENTO -->
+  <section class="step" data-s="3">
+    <p class="kicker">03 · esse atendimento</p>
+    <h1>Como é esse atendimento hoje?</h1>
+    <p class="lede">Três respostas rápidas. <strong>Chute honesto vale</strong> — dá pra corrigir depois e recalcular.</p>
+
+    <div class="f">
+      <label for="hoje">Quanto você cobra hoje nesse serviço?</label>
+      <p class="help">É com esse número que a gente compara o resto.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="hoje" inputmode="decimal" min="0" max="2000" placeholder="Ex: 120"></div>
+      <p class="calm">Se ainda não cobra ou está começando agora, deixa em branco.</p>
+    </div>
+
+    <div class="f">
+      <label>Quanto tempo ele ocupa da sua agenda?</label>
+      <p class="help">Do oi ao tchau: preparo, aplicação, limpeza e o tempo de arrumar a maca pra próxima.</p>
+      <div class="chips" id="gTempo">
+        <button class="chip" data-v="1">1h</button>
+        <button class="chip" data-v="1.5">1h30</button>
+        <button class="chip" data-v="2">2h</button>
+        <button class="chip" data-v="2.5">2h30</button>
+        <button class="chip" data-v="3">3h</button>
+        <button class="chip" data-v="3.5">3h30+</button>
+      </div>
+      <p class="calm" id="tempoCalm">Se aplica em 1h30 e leva mais 15 minutinhos organizando tudo, marca 2h.</p>
+    </div>
+
+    <div class="f">
+      <label for="material">Quanto sai de material nessa aplicação?</label>
+      <p class="help">Fios, cola, primer, pad, fita, descartáveis — o que some a cada cliente.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="material" inputmode="decimal" min="0" max="300" placeholder="Ex: 15"></div>
+      <p class="calm">Quase ninguém sabe esse número de cabeça. A maioria fica entre R$ 10 e R$ 25 — se não souber, deixa em branco que a gente usa R$ 15.</p>
+    </div>
+
+    <div class="nav">
+      <button class="ghost" data-back="2">← Voltar</button>
+      <button class="btn" id="go3">Continuar</button>
+    </div>
+  </section>
+
+  <!-- 4 · ROTINA -->
+  <section class="step" data-s="4">
+    <p class="kicker">04 · a sua rotina</p>
+    <h1>Agora a parte que quase ninguém faz</h1>
+    <p class="lede">É isso que mostra se o seu preço <strong>paga o seu trabalho</strong> ou só cobre o material. Se travar em algum campo, pula — a gente usa um valor comum.</p>
+
+    <div class="f">
+      <label for="meta">Quanto você quer tirar por mês pra você?</label>
+      <p class="help">O que sobra no seu bolso, depois de pagar as contas do trabalho. É o seu salário.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="meta" inputmode="decimal" min="0" max="100000" placeholder="Ex: 4000"></div>
+      <p class="calm">Não é o que você tira hoje — é o que você quer tirar. Pensa num número que faz sentido, não no sonho.</p>
+    </div>
+
+    <div class="f">
+      <label for="fixos">As contas fixas do trabalho, somadas</label>
+      <p class="help">Aluguel da sala, luz, internet, sistema de agendamento, contador, o que você paga todo mês.</p>
+      <div class="money"><span class="rs">R$</span><input type="number" id="fixos" inputmode="decimal" min="0" max="100000" placeholder="Ex: 0"></div>
+      <p class="calm">Atende em casa e não separa nada disso? Deixa zero mesmo. Não tem problema nenhum.</p>
+    </div>
+
+    <div class="f">
+      <label>Quantos dias por semana você atende?</label>
+      <div class="chips" id="gDias">
+        <button class="chip" data-v="2">2</button><button class="chip" data-v="3">3</button>
+        <button class="chip" data-v="4">4</button><button class="chip on" data-v="5">5</button>
+        <button class="chip" data-v="6">6</button>
+      </div>
+    </div>
+
+    <div class="f">
+      <label>E quantas horas por dia?</label>
+      <p class="help">Sua rotina normal, não a semana perfeita.</p>
+      <div class="chips" id="gHoras">
+        <button class="chip" data-v="3">3h</button><button class="chip" data-v="4">4h</button>
+        <button class="chip" data-v="6">6h</button><button class="chip on" data-v="8">8h</button>
+        <button class="chip" data-v="10">10h</button>
+      </div>
+    </div>
+
+    <div class="why">
+      <b>Por que a gente não usa todas as horas</b>
+      <p>Porque tem cliente que atrasa, cliente que desmarca em cima da hora e aquele buraco de 40 minutos entre uma e outra. A gente conta 3 de cada 4 horas como hora que realmente vira dinheiro — assim o preço sai realista.</p>
+    </div>
+
+    <div class="nav">
+      <button class="ghost" data-back="3">← Voltar</button>
+      <button class="btn" id="go4">Ver meu preço</button>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section class="step" data-s="r">
+    <div class="head">
+      <p class="lead" id="rLead">Você deveria cobrar</p>
       <p class="price" id="rPrice">—</p>
       <p class="for" id="rFor"></p>
     </div>
@@ -265,13 +324,13 @@
 
     <div class="ruler">
       <div class="track"><div class="below" id="rBelow"></div><div class="band" id="rBand"></div></div>
-      <div class="pin" id="rPin"></div>
-      <div class="pin today" id="rPinToday" hidden></div>
+      <div class="pin" id="rPin"></div><div class="pin today" id="rPinToday" hidden></div>
     </div>
     <div class="ends"><span id="rLow">—</span><span id="rHigh">—</span></div>
+    <p class="foot" id="rulerFoot"></p>
 
     <div class="card">
-      <h3>O que dizer se ela achar caro</h3>
+      <h4>O que dizer quando ela achar caro</h4>
       <div class="tabs" id="rTabs">
         <button class="tab on" data-s="caro">“Tá caro”</button>
         <button class="tab" data-s="concorrente">“Fulana cobra menos”</button>
@@ -279,83 +338,47 @@
         <button class="tab" data-s="desconto">Pedido de desconto</button>
       </div>
       <div class="speech" id="rSpeech">—</div>
-      <div class="copy-row">
-        <button class="copy" id="rCopy">Copiar</button>
-        <span class="copy-msg" id="rCopied">Copiado ✓</span>
-      </div>
+      <div class="copyrow"><button class="copy" id="rCopy">Copiar</button><span class="copied" id="rCopied">Copiado ✓</span></div>
+      <p class="foot">Nenhum desses textos dá desconto. Todos oferecem uma opção mais barata — porque desconto ensina a cliente a pedir desconto na próxima.</p>
     </div>
 
-    <details>
+    <details open>
       <summary>Manutenção e remoção</summary>
       <div class="inner">
         <div class="line"><span class="k">Manutenção até 15 dias</span><span class="v" id="rM15">—</span></div>
-        <div class="line"><span class="k">16 a 21 dias</span><span class="v" id="rM21">—</span></div>
-        <div class="line"><span class="k">22 dias ou mais</span><span class="v" id="rM22">—</span></div>
+        <div class="line"><span class="k">Manutenção de 16 a 21 dias</span><span class="v" id="rM21">—</span></div>
+        <div class="line"><span class="k">De 22 dias em diante</span><span class="v" id="rM22">—</span></div>
         <div class="line"><span class="k">Remoção</span><span class="v" id="rRem">—</span></div>
-        <p class="foot" id="rServFoot">Quanto mais tempo passa, mais fio falta — e mais trabalho é. Por isso a manutenção sobe por faixa.</p>
-      </div>
-    </details>
-
-    <details id="dConta">
-      <summary>Minha conta é diferente</summary>
-      <div class="inner">
-        <p class="foot" style="margin:0 0 14px" id="rAssume"></p>
-        <div class="row2">
-          <div class="q" style="margin-bottom:14px">
-            <label for="cTempo">Tempo do serviço</label>
-            <select id="cTempo">
-              <option value="1">1h</option><option value="1.5">1h30</option>
-              <option value="2">2h</option><option value="2.5">2h30</option>
-              <option value="3">3h</option><option value="3.5">3h30+</option>
-            </select>
-          </div>
-          <div class="q" style="margin-bottom:14px">
-            <label for="cMaterial">Material</label>
-            <div class="money"><span class="rs">R$</span><input type="number" id="cMaterial" inputmode="decimal" min="0" max="300" placeholder="15"></div>
-          </div>
-        </div>
-        <div class="row2">
-          <div class="q" style="margin-bottom:14px">
-            <label for="cMeta">Quero tirar por mês</label>
-            <div class="money"><span class="rs">R$</span><input type="number" id="cMeta" inputmode="decimal" min="0" max="100000" placeholder="4000"></div>
-          </div>
-          <div class="q" style="margin-bottom:14px">
-            <label for="cFixos">Contas fixas</label>
-            <div class="money"><span class="rs">R$</span><input type="number" id="cFixos" inputmode="decimal" min="0" max="100000" placeholder="0"></div>
-          </div>
-        </div>
-        <div class="row2">
-          <div class="q" style="margin-bottom:14px">
-            <label for="cDias">Dias por semana</label>
-            <select id="cDias"><option>2</option><option>3</option><option>4</option><option selected>5</option><option>6</option></select>
-          </div>
-          <div class="q" style="margin-bottom:14px">
-            <label for="cHoras">Horas por dia</label>
-            <select id="cHoras"><option>3</option><option>4</option><option>6</option><option selected>8</option><option>10</option></select>
-          </div>
-        </div>
-        <div class="q" style="margin-bottom:14px">
-          <label for="cMercado">O que cobram na sua região por esse serviço</label>
-          <div class="money"><span class="rs">R$</span><input type="number" id="cMercado" inputmode="decimal" min="0" max="3000" placeholder="—"></div>
-          <p class="opt-note">Olhe 3 perfis do seu nível na sua cidade e ponha o valor do meio. Isso vale mais que a nossa estimativa.</p>
-        </div>
-        <button class="go" id="cRecalc" style="margin-top:2px">Recalcular</button>
+        <p class="foot" id="rServFoot"></p>
       </div>
     </details>
 
     <details>
-      <summary>De onde vem esse número</summary>
+      <summary>Ajustar os meus números</summary>
       <div class="inner">
-        <div class="line"><span class="k">Base do serviço</span><span class="v" id="sBase">—</span></div>
-        <div class="line"><span class="k">Ajuste da sua praça</span><span class="v" id="sPraca">—</span></div>
-        <div class="line"><span class="k">Faixa da sua região</span><span class="v" id="sFaixa">—</span></div>
-        <div class="line"><span class="k">Seu piso</span><span class="v" id="sPiso">—</span></div>
-        <p class="foot">Calibrado com 30+ preços publicados por profissionais reais em 12 cidades (jul/2026). Norte e Nordeste têm poucos dados — se você atende lá, use o campo da sua região em “minha conta é diferente”.</p>
+        <p class="foot" style="margin:0 0 13px" id="rAssume"></p>
+        <div class="f" style="margin-bottom:13px">
+          <label for="cMercado">O que cobram na sua cidade por esse serviço</label>
+          <p class="help">Olha 3 perfis parecidos com o seu na sua cidade e põe o valor do meio. Isso vale mais que qualquer estimativa nossa.</p>
+          <div class="money"><span class="rs">R$</span><input type="number" id="cMercado" inputmode="decimal" min="0" max="3000" placeholder="Ex: 140"></div>
+        </div>
+        <button class="btn wide" id="cRecalc">Recalcular</button>
+      </div>
+    </details>
+
+    <details>
+      <summary>De onde saiu esse número</summary>
+      <div class="inner">
+        <div class="line"><span class="k">Preço do meio na sua cidade</span><span class="v" id="sMed">—</span></div>
+        <div class="line"><span class="k">Faixa que a sua cidade paga</span><span class="v" id="sFaixa">—</span></div>
+        <div class="line"><span class="k">O mínimo que fecha a sua conta</span><span class="v" id="sPiso">—</span></div>
+        <div class="line"><span class="k">Quanto custa uma hora sua</span><span class="v" id="sHora">—</span></div>
+        <p class="foot">A faixa vem de mais de 30 preços que profissionais de verdade publicaram em 12 cidades, em julho. Não é chute nem tabela de blog. No Norte e no Nordeste a gente tem menos dado — se você atende lá, usa o campo de cima pra corrigir.</p>
       </div>
     </details>
 
     <button class="again" id="rAgain">↺ Calcular outro serviço</button>
-  </div>
+  </section>
 </div>
 
 <script>
@@ -367,14 +390,11 @@
   var TETO_MANUT = 0.85, TETO_REMOCAO = 0.45;
   var TEMPO_MANUT = 0.55, BASE_REMOCAO = 45, TEMPO_REMOCAO = 0.5;
 
-  // defaults — quem não abrir "minha conta é diferente" roda com isto
-  var A = {
-    tecnica:null, praca:null, hoje:0,
-    tempo:2, material:15, prolabore:4000, fixos:0,
-    diasSemana:5, horasDia:8, mercadoCustom:0,
-    atendimentos:20, momento:0.55
-  };
-  var tecNome = "", tecKey = "brasileiro", tempoPadrao = 2;
+  var A = { tecnica:null, praca:null, hoje:0, tempo:2, material:15,
+            prolabore:4000, fixos:0, diasSemana:5, horasDia:8,
+            mercadoCustom:0, atendimentos:20, momento:0.55 };
+  var tecNome = "", tecKey = "brasileiro", tempoPadrao = 2, tempoTocado = false;
+  var PASSOS = ["1","2","3","4","r"];
 
   function el(id) { return document.getElementById(id); }
   function brl(v) { return "R$ " + Math.round(v).toLocaleString("pt-BR"); }
@@ -382,7 +402,76 @@
   function tTxt(t) { return t===1?"1h":t===1.5?"1h30":t===2?"2h":t===2.5?"2h30":t===3?"3h":"3h30"; }
   function num(id, fb) { var v = parseFloat(el(id).value); return isNaN(v) || v < 0 ? fb : v; }
 
-  // ---------- motor (o mesmo da v3) ----------
+  function show(s) {
+    var all = document.querySelectorAll(".step");
+    for (var i = 0; i < all.length; i++) all[i].classList.remove("on");
+    document.querySelector('[data-s="' + s + '"]').classList.add("on");
+    var idx = PASSOS.indexOf(s);
+    el("stepno").textContent = s === "r" ? "" : (idx + 1) + " de 4";
+    el("rail").style.width = ((idx + 1) / PASSOS.length * 100) + "%";
+    window.scrollTo({ top:0, behavior:"auto" });
+  }
+
+  function pick(boxId, fn, avanca) {
+    var box = el(boxId), btns = box.querySelectorAll(".opt, .chip");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        for (var k = 0; k < btns.length; k++) btns[k].classList.remove("on");
+        this.classList.add("on");
+        fn(this);
+        if (avanca) { var b = this; setTimeout(function () { show(avanca); }, 160); }
+      });
+    }
+  }
+
+  pick("gTec", function (b) {
+    A.tecnica = parseFloat(b.getAttribute("data-v"));
+    tecNome = b.getAttribute("data-n");
+    tecKey = b.getAttribute("data-k");
+    tempoPadrao = parseFloat(b.getAttribute("data-t"));
+    if (!tempoTocado) {
+      A.tempo = tempoPadrao;
+      var chips = el("gTempo").querySelectorAll(".chip");
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].classList.toggle("on", parseFloat(chips[i].getAttribute("data-v")) === tempoPadrao);
+      }
+      el("tempoCalm").textContent = "Já deixamos marcado " + tTxt(tempoPadrao) +
+        ", que é o mais comum nesse serviço. Se o seu é diferente, muda aí.";
+    }
+  }, "2");
+
+  pick("gCidade", function (b) { A.praca = parseFloat(b.getAttribute("data-v")); }, "3");
+  pick("gTempo", function (b) { A.tempo = parseFloat(b.getAttribute("data-v")); tempoTocado = true; });
+  pick("gDias", function (b) { A.diasSemana = parseFloat(b.getAttribute("data-v")); });
+  pick("gHoras", function (b) { A.horasDia = parseFloat(b.getAttribute("data-v")); });
+
+  var backs = document.querySelectorAll("[data-back]");
+  for (var i = 0; i < backs.length; i++) {
+    backs[i].addEventListener("click", function () { show(this.getAttribute("data-back")); });
+  }
+
+  el("go3").addEventListener("click", function () {
+    A.hoje = num("hoje", 0);
+    A.material = num("material", 15);
+    show("4");
+  });
+
+  el("go4").addEventListener("click", function () {
+    A.prolabore = num("meta", 4000);
+    A.fixos = num("fixos", 0);
+    show("r");
+    render();
+  });
+
+  el("cRecalc").addEventListener("click", function () {
+    A.mercadoCustom = num("cMercado", 0);
+    render();
+    window.scrollTo({ top:0, behavior:"smooth" });
+  });
+
+  el("rAgain").addEventListener("click", function () { show("1"); });
+
+  // ---------- motor (idêntico ao validado na v3/v4) ----------
   function compute() {
     var base = A.tecnica || 148, praca = A.praca || 1;
     var tempo = A.tempo, material = A.material;
@@ -410,13 +499,12 @@
       custoHora:custoHora, piso:piso, recomendado:recomendado, conflito:conflito,
       tempo:tempo, material:material, custom:A.mercadoCustom > 0,
       manut:{ d15:mnt(MANUT.d15), d21:mnt(MANUT.d21), d22:mnt(MANUT.d22) },
-      pisoManut:pisoManut, tempoManut:tempoManut,
-      manutNoTeto: pisoManut >= tetoManut,
+      pisoManut:pisoManut, tempoManut:tempoManut, manutNoTeto: pisoManut >= tetoManut,
       remocao: Math.min(Math.max(pisoRemocao, BASE_REMOCAO * praca), recomendado * TETO_REMOCAO)
     };
   }
 
-  // ---------- scripts ----------
+  // ---------- textos pra cliente ----------
   function scripts(c) {
     var preco = brl(c.recomendado), t = tTxt(c.tempo);
     var caro = {
@@ -434,55 +522,8 @@
     };
   }
 
-  // ---------- entradas ----------
-  var picks = el("gTec").querySelectorAll(".pick");
-  for (var i = 0; i < picks.length; i++) {
-    picks[i].addEventListener("click", function () {
-      for (var k = 0; k < picks.length; k++) picks[k].classList.remove("on");
-      this.classList.add("on");
-      A.tecnica = parseFloat(this.getAttribute("data-v"));
-      tecNome = this.getAttribute("data-n");
-      tecKey = this.getAttribute("data-k");
-      tempoPadrao = parseFloat(this.getAttribute("data-t"));
-      A.tempo = tempoPadrao;
-      el("cTempo").value = String(tempoPadrao);
-      checa();
-    });
-  }
-  el("praca").addEventListener("change", function () {
-    A.praca = parseFloat(this.value) || null;
-    checa();
-  });
-  function checa() { el("go").disabled = !(A.tecnica && A.praca); }
-
-  el("go").addEventListener("click", function () {
-    A.hoje = num("hoje", 0);
-    el("form").classList.add("off");
-    el("result").classList.add("on");
-    render();
-    window.scrollTo({ top:0, behavior:"auto" });
-  });
-
-  el("cRecalc").addEventListener("click", function () {
-    A.tempo = parseFloat(el("cTempo").value) || tempoPadrao;
-    A.material = num("cMaterial", 15);
-    A.prolabore = num("cMeta", 4000);
-    A.fixos = num("cFixos", 0);
-    A.diasSemana = parseFloat(el("cDias").value) || 5;
-    A.horasDia = parseFloat(el("cHoras").value) || 8;
-    A.mercadoCustom = num("cMercado", 0);
-    render();
-    window.scrollTo({ top:0, behavior:"smooth" });
-  });
-
-  el("rAgain").addEventListener("click", function () {
-    el("result").classList.remove("on");
-    el("form").classList.remove("off");
-    window.scrollTo({ top:0, behavior:"auto" });
-  });
-
-  var tabs = el("rTabs").querySelectorAll(".tab");
   var cur = null;
+  var tabs = el("rTabs").querySelectorAll(".tab");
   for (var j = 0; j < tabs.length; j++) {
     tabs[j].addEventListener("click", function () {
       for (var k = 0; k < tabs.length; k++) tabs[k].classList.remove("on");
@@ -493,59 +534,60 @@
   }
   el("rCopy").addEventListener("click", function () {
     var txt = el("rSpeech").textContent;
-    function ok() {
-      el("rCopied").classList.add("on");
-      setTimeout(function () { el("rCopied").classList.remove("on"); }, 2200);
-    }
-    function fallback() {
+    function ok() { el("rCopied").classList.add("on"); setTimeout(function () { el("rCopied").classList.remove("on"); }, 2200); }
+    function fb() {
       var ta = document.createElement("textarea");
-      ta.value = txt; ta.setAttribute("readonly", "");
-      ta.style.position = "fixed"; ta.style.opacity = "0";
+      ta.value = txt; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
       document.body.appendChild(ta); ta.select();
       try { document.execCommand("copy"); ok(); } catch (e) {}
       document.body.removeChild(ta);
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(ok, fallback);
-    } else { fallback(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).then(ok, fb); }
+    else { fb(); }
   });
 
-  // ---------- veredito: uma frase, um número ----------
   function verdict(c, hoje) {
     var v = el("rVerdict");
     if (c.conflito) {
       v.className = "verdict alert";
-      v.innerHTML = "<h2>O seu problema não é o preço</h2><p>A sua conta pede <strong>" + brl(c.piso) +
-        "</strong>, mas a sua região paga no máximo <strong>" + brl(c.mercadoMax) + "</strong> por " + tecNome +
-        ". Subir a tabela acima disso só esvazia a agenda — o que precisa mudar é o custo, a agenda ou o tempo de aplicação.</p>";
+      v.innerHTML = "<h3>O seu problema não é o preço</h3><p>Pra sustentar a sua rotina você precisaria de <strong>" +
+        brl(c.piso) + "</strong> nesse serviço, mas a sua cidade paga no máximo <strong>" + brl(c.mercadoMax) +
+        "</strong>. Cobrar acima disso só vai esvaziar a sua agenda.<span class='big'>" + brl(c.custoHora) +
+        "/h</span>é quanto custa uma hora sua hoje. Ou a conta fixa está pesada demais, ou a agenda está curta demais, ou a aplicação está demorando demais. Mexe nisso antes de mexer na tabela.</p>";
       return;
     }
     if (hoje > 0 && hoje < c.piso) {
       v.className = "verdict alert";
-      v.innerHTML = "<h2>Hoje você paga pra trabalhar</h2><p>Cobrando <strong>" + brl(hoje) +
-        "</strong>, cada aplicação sai do seu bolso: só o seu tempo e o material já custam <strong>" + brl(c.piso) +
-        "</strong>.<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
-        "</span>é o que você deixa na mesa por mês, em 20 aplicações.</p>";
+      v.innerHTML = "<h3>Nesse preço, você está pagando pra trabalhar</h3><p>Você cobra <strong>" + brl(hoje) +
+        "</strong>. Só o seu tempo e o material já custam <strong>" + brl(c.piso) +
+        "</strong> — o resto sai do seu bolso.<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
+        "</span>é o que fica pra trás por mês, contando 20 atendimentos. Sem atender ninguém a mais.</p>";
       return;
     }
     if (hoje > 0 && hoje < c.recomendado) {
-      var ganho = (c.recomendado - hoje) * A.atendimentos;
       v.className = "verdict gain";
-      v.innerHTML = "<h2>Cabe subir " + Math.round((c.recomendado - hoje) / hoje * 100) + "%</h2><p>Você cobra <strong>" +
-        brl(hoje) + "</strong> e a sua região sustenta <strong>" + brl(c.recomendado) + "</strong>." +
-        "<span class='big'>" + brl(ganho) + "</span>a mais por mês, em 20 aplicações — sem uma cliente nova.</p>";
+      v.innerHTML = "<h3>Cabe subir " + Math.round((c.recomendado - hoje) / hoje * 100) + "%</h3><p>Você cobra <strong>" +
+        brl(hoje) + "</strong> e a sua cidade paga <strong>" + brl(c.recomendado) + "</strong> por esse serviço." +
+        "<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
+        "</span>a mais por mês, em 20 atendimentos — com as mesmas clientes que você já tem.</p>";
+      return;
+    }
+    if (hoje > 0 && hoje >= c.mercadoMax) {
+      v.className = "verdict ok";
+      v.innerHTML = "<h3>Você já está no topo da sua cidade</h3><p>Cobrando <strong>" + brl(hoje) +
+        "</strong> você está acima da maioria por aí, e a sua conta fecha. Daqui pra frente o preço sobe por <strong>prova</strong>, não por tabela: portfólio, fila de espera, o cuidado que só quem senta na sua maca conhece.</p>";
       return;
     }
     if (hoje > 0) {
       v.className = "verdict ok";
-      v.innerHTML = "<h2>Seu preço está bom</h2><p>Cobrando <strong>" + brl(hoje) +
-        "</strong> você está acima do seu piso e dentro do que a sua região paga. O próximo degrau é <strong>" +
+      v.innerHTML = "<h3>Seu preço está de pé</h3><p>Cobrando <strong>" + brl(hoje) +
+        "</strong> você cobre a sua conta e está dentro do que a sua cidade paga. O próximo degrau é <strong>" +
         brl(c.mercadoMax) + "</strong> — e ele se conquista com prova, não com tabela.</p>";
       return;
     }
     v.className = "verdict ok";
-    v.innerHTML = "<h2>Seu piso é " + brl(c.piso) + "</h2><p>Abaixo disso cada aplicação sai do seu bolso. O teto da sua região é <strong>" +
-      brl(c.mercadoMax) + "</strong>.</p>";
+    v.innerHTML = "<h3>Abaixo de " + brl(c.piso) + " não compensa</h3><p>Esse é o mínimo que cobre o seu tempo e o material nesse serviço. O teto da sua cidade é <strong>" +
+      brl(c.mercadoMax) + "</strong> — é entre esses dois que você tem espaço pra se posicionar.</p>";
   }
 
   function ruler(c, hoje) {
@@ -563,15 +605,17 @@
     else { el("rPinToday").hidden = true; }
     el("rLow").textContent = brl(lo);
     el("rHigh").textContent = brl(hi);
+    el("rulerFoot").textContent = hoje > 0
+      ? "A marca dourada é o que você cobra hoje. A verde é onde dá pra chegar. A parte riscada é prejuízo."
+      : "A faixa verde é o que a sua cidade paga por esse serviço. A parte riscada é prejuízo.";
   }
 
-  // ---------- render ----------
   function render() {
     var c = compute(), hoje = A.hoje || 0;
 
     el("rPrice").textContent = "R$ " + r5(c.recomendado * .95) + "–" + r5(c.recomendado * 1.08);
-    el("rLead").textContent = c.conflito ? "O teto da sua região" : "Seu preço";
-    el("rFor").textContent = tecNome + (c.custom ? " · faixa ajustada por você" : "");
+    el("rLead").textContent = c.conflito ? "O máximo que a sua cidade paga" : "Você deveria cobrar";
+    el("rFor").textContent = "pelo " + tecNome + (c.custom ? " · com o valor que você informou" : "");
 
     verdict(c, hoje);
     ruler(c, hoje);
@@ -579,19 +623,19 @@
     el("rM15").textContent = brl(r5(c.manut.d15));
     el("rM21").textContent = brl(r5(c.manut.d21));
     el("rM22").textContent = brl(r5(c.manut.d22));
-    el("rRem").textContent = brl(r5(c.remocao)) + "*";
+    el("rRem").textContent = brl(r5(c.remocao));
     el("rServFoot").innerHTML = c.manutNoTeto
-      ? "<strong>Atenção:</strong> pelo seu custo por hora, a manutenção sairia quase o preço da aplicação. Nesse caso, cobre reaplicação."
-      : "Quanto mais tempo passa, mais fio falta — e mais trabalho é. Por isso a manutenção sobe por faixa. <br>*Remoção é estimativa: não existe preço público confiável dela.";
+      ? "<strong>Olha só:</strong> do jeito que a sua conta está, a manutenção sairia quase o preço da aplicação inteira. Quando chega nesse ponto, cobra reaplicação mesmo."
+      : "Cliente que volta com 25 dias dá quase o mesmo trabalho de uma aplicação nova — por isso o valor sobe conforme o tempo passa. Cobrar um preço só pra qualquer prazo é trabalhar de graça na cliente que enrola. O valor da remoção é estimativa: é o único que a gente não achou publicado.";
 
-    el("rAssume").innerHTML = "A conta acima assumiu <strong>" + tTxt(c.tempo) + "</strong> de atendimento, <strong>" +
-      brl(c.material) + "</strong> de material e meta de <strong>" + brl(A.prolabore) +
-      "</strong> por mês em 5 dias de 8h. Se a sua realidade é outra, corrija aqui.";
+    el("rAssume").innerHTML = "A conta usou <strong>" + tTxt(c.tempo) + "</strong> de atendimento, <strong>" +
+      brl(c.material) + "</strong> de material, meta de <strong>" + brl(A.prolabore) + "</strong> por mês e <strong>" +
+      A.diasSemana + " dias de " + A.horasDia + "h</strong>. Se errou alguma coisa, é só voltar nos passos.";
 
-    el("sBase").textContent = brl(c.base);
-    el("sPraca").textContent = "×" + c.praca.toFixed(2).replace(".", ",");
+    el("sMed").textContent = brl(c.mediana) + (c.custom ? " (seu)" : "");
     el("sFaixa").textContent = brl(c.mercadoMin) + " – " + brl(c.mercadoMax);
     el("sPiso").textContent = brl(c.piso);
+    el("sHora").textContent = brl(c.custoHora) + "/h";
 
     cur = scripts(c);
     var sel = el("rTabs").querySelector(".tab.on");
