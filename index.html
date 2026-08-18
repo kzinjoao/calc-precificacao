@@ -150,6 +150,9 @@
   .trio .ideal { background:var(--wine); color:#fff; }
   .trio .ideal .t { color:#D9B7C9; }
 
+  .triofoot { font-size:12.5px; line-height:1.55; color:var(--ink-2); margin:12px 0 0; }
+  .triofoot b { color:var(--wine); font-weight:600; }
+
   /* régua piso → teto */
   .ruler-box { margin-top:22px; }
   .ruler { position:relative; height:34px; }
@@ -212,6 +215,22 @@
   details.fold[open] > summary::after { content:"–"; }
   details.fold .inner { padding:0 18px 18px; }
 
+  /* projeção do mês */
+  .projgrid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .projgrid.solo { grid-template-columns:1fr; }
+  .projgrid .col { border-radius:var(--r-md); padding:14px 12px; background:var(--card-2); border:1px solid var(--line); }
+  .projgrid .col.now { background:var(--pink-50); border-color:var(--pink-100); }
+  .projgrid .ct { font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted);
+    font-weight:600; margin:0 0 5px; }
+  .projgrid .cv { font-size:21px; font-weight:600; color:var(--wine); margin:0;
+    font-variant-numeric:tabular-nums; letter-spacing:-.01em; }
+  .projgrid .col.now .cv { color:var(--magenta); }
+  .projgrid .cs { font-size:11.5px; color:var(--muted); margin:4px 0 0; line-height:1.4; }
+  .projdelta { background:var(--butter); border:1.5px solid var(--gold); border-radius:var(--r-md);
+    padding:13px 15px; margin:11px 0 0; font-size:14px; color:var(--gold-ink); line-height:1.5; }
+  .projdelta b { font-size:19px; font-weight:600; }
+  .proj .line { margin-top:12px; }
+
   /* bônus — o kit de mensagens */
   .bonus { background:var(--wine); border-radius:var(--r-lg); padding:22px 20px 20px; margin-top:14px;
     box-shadow:0 8px 24px rgba(78,19,56,.18); }
@@ -263,7 +282,7 @@
         <button class="opt" data-v="175" data-n="volume russo"       data-k="russo"      data-t="2">Volume russo</button>
         <button class="opt" data-v="225" data-n="mega volume"        data-k="mega"       data-t="3">Mega volume</button>
       </div>
-      <p class="hint">Manutenção e remoção saem calculadas no resultado — você não precisa responder de novo.</p>
+      <p class="hint">Manutenção e remoção a gente calcula sozinho no fim, a partir desse serviço.</p>
     </div>
 
     <div class="field">
@@ -306,18 +325,28 @@
     </div>
 
     <div class="field">
-      <label class="tag">Quanto você cobra hoje? <span style="text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400">— opcional</span></label>
+      <label class="tag">Quanto você cobra hoje nesse serviço?</label>
       <div class="butter"><span class="rs">R$</span><input type="number" id="hoje" inputmode="decimal" min="0" max="2000" placeholder="120"></div>
-      <p class="hint">Com esse número a gente te mostra quanto você está deixando na mesa por mês. Se está começando agora, deixa em branco.</p>
+      <p class="hint">É com esse número que a gente calcula quanto você está deixando na mesa por mês. Se está começando agora e ainda não cobra, deixa em branco.</p>
+    </div>
+
+    <div class="field">
+      <label class="tag">Quantas clientes você atende por semana?</label>
+      <div class="stepper">
+        <button type="button" id="cMinus" aria-label="menos clientes">−</button>
+        <span class="val" id="cVal">5 por semana</span>
+        <button type="button" id="cPlus" aria-label="mais clientes">+</button>
+      </div>
+      <p class="hint">Conta a semana normal, não a cheia. É com isso que a gente projeta o seu mês.</p>
     </div>
 
     <details class="more">
-      <summary>Ajustar valor-hora e margem (opcional)</summary>
+      <summary>Estamos usando R$ 40 por hora e 30% de lucro — ajustar</summary>
       <div class="inner">
         <div class="field">
           <label class="tag">Quanto você quer ganhar por hora?</label>
           <div class="butter"><span class="rs">R$</span><input type="number" id="hora" inputmode="decimal" min="0" max="1000" placeholder="40"></div>
-          <p class="hint">É o que fica pra você, não o que a cliente paga. Quem tira <b>R$ 3.000 por mês trabalhando 4 dias de 6 horas</b> está ganhando por volta de <b>R$ 38 por hora</b>.</p>
+          <p class="hint">É o que fica pra você, não o que a cliente paga. Quem tira <b>R$ 3.000 por mês</b> atendendo <b>4 dias de 6 horas</b> está ganhando por volta de <b>R$ 31 por hora</b>.</p>
         </div>
         <div class="field">
           <label class="tag">Quanto de lucro por cima?</label>
@@ -327,7 +356,7 @@
             <button class="opt" data-v="0.40">40%</button>
             <button class="opt" data-v="0.50">50%</button>
           </div>
-          <p class="hint">Isso é do negócio, não seu: repor material, pagar curso, trocar a maca, aguentar mês fraco. Se não souber, deixa <b>30%</b>.</p>
+          <p class="hint">Esse dinheiro fica no caixa do negócio, não no seu bolso: é o que repõe material, paga curso, troca a maca e segura mês fraco. Se não souber, deixa <b>30%</b>.</p>
         </div>
       </div>
     </details>
@@ -347,10 +376,12 @@
       <span class="badge" id="rBadge">—</span>
 
       <div class="trio">
-        <div class="min"><div class="t">Mínimo</div><div class="v" id="tMin">—</div></div>
-        <div class="mkt"><div class="t">Mercado</div><div class="v" id="tMkt">—</div></div>
-        <div class="ideal"><div class="t">Ideal</div><div class="v" id="tIdeal">—</div></div>
+        <div class="min"><div class="t">Seu mínimo</div><div class="v" id="tMin">—</div></div>
+        <div class="mkt"><div class="t">Meio da cidade</div><div class="v" id="tMkt">—</div></div>
+        <div class="ideal"><div class="t">Seu preço</div><div class="v" id="tIdeal">—</div></div>
       </div>
+
+      <p class="triofoot" id="rTrioFoot">—</p>
 
       <div class="ruler-box">
         <div class="ruler">
@@ -362,6 +393,25 @@
       </div>
 
       <div class="verdict" id="rVerdict"></div>
+    </div>
+
+    <div class="block proj">
+      <h4 id="projTitle">Se você cobrar esse valor</h4>
+      <div class="projgrid">
+        <div class="col" id="projHojeCol">
+          <p class="ct">Hoje</p>
+          <p class="cv" id="projHoje">—</p>
+          <p class="cs" id="projHojeSub">—</p>
+        </div>
+        <div class="col now">
+          <p class="ct">Com o preço novo</p>
+          <p class="cv" id="projNovo">—</p>
+          <p class="cs" id="projNovoSub">—</p>
+        </div>
+      </div>
+      <p class="projdelta" id="projDelta" hidden>—</p>
+      <div class="line"><span class="k" id="projBaseK">Atendimentos no mês</span><span class="v" id="projBase">—</span></div>
+      <p class="note" id="projNota">—</p>
     </div>
 
     <div class="block">
@@ -402,7 +452,7 @@
         <div class="line"><span class="k">Seu mínimo (material + hora + lucro)</span><span class="v" id="sPiso">—</span></div>
         <div class="line"><span class="k">Preço do meio na sua cidade</span><span class="v" id="sMed">—</span></div>
         <div class="line"><span class="k">Faixa que a sua cidade paga</span><span class="v" id="sFaixa">—</span></div>
-        <div class="line"><span class="k">Sobra por atendimento</span><span class="v" id="sLucro">—</span></div>
+        <div class="line"><span class="k">Sobra, já pagando material, taxa e a sua hora</span><span class="v" id="sLucro">—</span></div>
         <p class="note">A faixa vem de mais de 30 preços que profissionais publicaram em 12 cidades, em julho — não é tabela de blog. No Norte e Nordeste temos menos dado; se você atende lá, corrige no campo abaixo.</p>
         <div class="field" style="margin-top:16px">
           <label class="tag">O que cobram na sua cidade por esse serviço</label>
@@ -433,7 +483,7 @@
   var TEMPO_MANUT = 0.55, BASE_REMOCAO = 45, TEMPO_REMOCAO = 0.5;
 
   var A = { tecnica:null, praca:null, tempo:2, material:15, hora:40, margem:0.30,
-            hoje:0, mercadoCustom:0, atendimentos:20, momento:0.55 };
+            hoje:0, mercadoCustom:0, porSemana:5, atendimentos:20, momento:0.55 };
   var tecNome = "", tecKey = "brasileiro", pracaNome = "", tempoTocado = false;
 
   function el(id) { return document.getElementById(id); }
@@ -526,6 +576,14 @@
   el("tMinus").addEventListener("click", function () { bumpTempo(-0.5); });
   el("tPlus").addEventListener("click", function () { bumpTempo(0.5); });
 
+  function bumpClientes(d) {
+    A.porSemana = Math.min(40, Math.max(1, A.porSemana + d));
+    A.atendimentos = A.porSemana * 4;
+    el("cVal").textContent = A.porSemana + " por semana";
+  }
+  el("cMinus").addEventListener("click", function () { bumpClientes(-1); });
+  el("cPlus").addEventListener("click", function () { bumpClientes(1); });
+
   pick("gPraca", function (b) {
     A.praca = parseFloat(b.getAttribute("data-v"));
     pracaNome = b.getAttribute("data-s") || "";
@@ -610,6 +668,7 @@
   /* ================= veredito e régua ================= */
   function verdict(c, hoje) {
     var v = el("rVerdict");
+    var alvo = r5(c.recomendado);   // o mesmo numero que a tela mostra em cima
     if (c.conflito) {
       v.className = "verdict alert";
       v.innerHTML = "<h3>Esse valor por hora não cabe na sua cidade</h3><p>Cobrando <strong>" + brl(c.hora) +
@@ -622,16 +681,16 @@
       v.className = "verdict alert";
       v.innerHTML = "<h3>Nesse preço você trabalha quase de graça</h3><p>Você cobra <strong>" + brl(hoje) +
         "</strong>. Só o material e a sua hora já dão <strong>" + brl(c.piso) +
-        "</strong>.<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
-        "</span>é o que fica pra trás por mês, contando 20 atendimentos. Sem atender ninguém a mais.</p>";
+        "</strong>.<span class='big'>" + brl((alvo - hoje) * A.atendimentos) +
+        "</span>é o que fica pra trás por mês, nas " + A.atendimentos + " clientes que você atende. Sem atender ninguém a mais.</p>";
       return;
     }
-    if (hoje > 0 && hoje < c.recomendado) {
+    if (hoje > 0 && hoje < alvo) {
       v.className = "verdict gain";
-      v.innerHTML = "<h3>Cabe subir " + Math.round((c.recomendado - hoje) / hoje * 100) + "%</h3><p>Você cobra <strong>" +
-        brl(hoje) + "</strong> e a sua cidade paga <strong>" + brl(c.recomendado) + "</strong> nesse serviço." +
-        "<span class='big'>" + brl((c.recomendado - hoje) * A.atendimentos) +
-        "</span>a mais por mês, em 20 atendimentos — com as clientes que você já tem.</p>";
+      v.innerHTML = "<h3>Cabe subir " + Math.round((alvo - hoje) / hoje * 100) + "%</h3><p>Você cobra <strong>" +
+        brl(hoje) + "</strong> e a sua cidade paga <strong>" + brl(alvo) + "</strong> nesse serviço." +
+        "<span class='big'>" + brl((alvo - hoje) * A.atendimentos) +
+        "</span>a mais por mês, nas " + A.atendimentos + " clientes que você já atende.</p>";
       return;
     }
     if (hoje > 0 && hoje >= c.mercadoMax) {
@@ -650,6 +709,48 @@
     v.className = "verdict ok";
     v.innerHTML = "<h3>Abaixo de " + brl(c.piso) + " não compensa</h3><p>Esse é o mínimo pra cobrir o material, a sua hora e o lucro que você pediu. O teto da sua cidade é <strong>" +
       brl(r5(c.mercadoMax)) + "</strong> — é entre os dois que você tem espaço.</p>";
+  }
+
+  // Projecao do mes. Faturamento = preco x atendimentos.
+  // "Fica com voce" desconta o que sai do bolso por cliente: material e a taxa da maquininha.
+  // A hora dela nao entra como despesa aqui - e o trabalho dela, nao conta a pagar.
+  function projecao(c, hoje) {
+    var N = A.atendimentos, novo = r5(c.recomendado);
+    var fatNovo = novo * N, ficaNovo = (novo * (1 - TAXA) - c.material) * N;
+
+    el("projNovo").textContent = brl(fatNovo);
+    el("projNovoSub").textContent = brl(ficaNovo) + " ficam com você";
+    el("projBase").textContent = N + " no mês  ·  " + brl(novo) + " cada";
+    el("projBaseK").textContent = A.porSemana + " clientes por semana";
+
+    if (hoje > 0) {
+      var fatHoje = hoje * N, ficaHoje = (hoje * (1 - TAXA) - c.material) * N;
+      el("projHojeCol").hidden = false;
+      el("projHojeCol").parentNode.className = "projgrid";
+      el("projHoje").textContent = brl(fatHoje);
+      el("projHojeSub").textContent = brl(ficaHoje) + " ficam com você";
+      el("projTitle").textContent = "O seu mês, antes e depois";
+
+      var dif = fatNovo - fatHoje;
+      if (dif > 0) {
+        var podePerder = Math.floor(N - N * hoje / novo);
+        el("projDelta").hidden = false;
+        el("projDelta").innerHTML = "<b>" + brl(dif) + " a mais por mês</b><br>com as mesmas clientes que você já atende.";
+        el("projNota").textContent = podePerder >= 1
+          ? "Essa conta vale se elas continuarem vindo. E mesmo que não continuem: você pode perder até " +
+            podePerder + " das " + N + " clientes do mês e ainda assim fechar igual ao que fecha hoje."
+          : "Essa conta vale se as suas clientes continuarem vindo com o preço novo.";
+      } else {
+        el("projDelta").hidden = true;
+        el("projNota").textContent = "Você já cobra acima do que a conta pede — esse mês já está de pé.";
+      }
+    } else {
+      el("projHojeCol").hidden = true;
+      el("projHojeCol").parentNode.className = "projgrid solo";
+      el("projDelta").hidden = true;
+      el("projTitle").textContent = "Como fica o seu mês";
+      el("projNota").textContent = "Como você não disse quanto cobra hoje, dá pra ver só o cenário novo. Volta e preenche esse campo pra comparar.";
+    }
   }
 
   function ruler(c, hoje) {
@@ -681,15 +782,31 @@
       (pracaNome ? " · " + pracaNome : "") + (c.custom ? " · com o seu valor" : "");
     el("rLead").textContent = c.conflito ? "O máximo que a sua cidade paga" : "Seu preço ideal";
     el("rPrice").textContent = ideal.toLocaleString("pt-BR");
-    el("rRange").textContent = "faixa saudável: " + brl(r5(c.recomendado * .95)) + " a " + brl(r5(c.recomendado * 1.08));
+    el("rRange").textContent = "dá pra cobrar de " + brl(r5(c.recomendado * .95)) +
+      " a " + brl(r5(c.recomendado * 1.08)) + " sem susto";
 
     var b = el("rBadge");
     if (c.conflito) {
       b.className = "badge alert";
-      b.textContent = "▲ teto da sua cidade — o seu mínimo não cabe aqui";
+      b.textContent = "▲ é o máximo que a sua cidade paga — o seu mínimo não cabe aqui";
     } else {
       b.className = "badge";
-      b.textContent = "▲ " + Math.round((c.recomendado / c.piso - 1) * 100) + "% acima do seu mínimo";
+      b.textContent = "▲ " + brl(ideal - c.piso) + " acima do seu mínimo, por atendimento";
+    }
+
+    // a pergunta que a tela nunca respondia: por que o preço fica acima do meio da cidade?
+    if (c.conflito) {
+      el("rTrioFoot").innerHTML = "A sua cidade paga entre <b>" + brl(c.mercadoMin) + "</b> e <b>" +
+        brl(r5(c.mercadoMax)) + "</b> nesse serviço. O seu mínimo dá <b>" + brl(c.piso) +
+        "</b> — acima do que a praça comporta. Por isso o seu preço para no teto.";
+    } else if (ideal > c.mediana) {
+      el("rTrioFoot").innerHTML = "A sua cidade paga entre <b>" + brl(c.mercadoMin) + "</b> e <b>" +
+        brl(r5(c.mercadoMax)) + "</b> nesse serviço. <b>" + brl(c.mediana) +
+        "</b> é o meio — é onde está a maioria. O seu preço fica acima do meio porque a sua conta fecha lá em cima, e a sua cidade paga.";
+    } else {
+      el("rTrioFoot").innerHTML = "A sua cidade paga entre <b>" + brl(c.mercadoMin) + "</b> e <b>" +
+        brl(r5(c.mercadoMax)) + "</b> nesse serviço. <b>" + brl(c.mediana) +
+        "</b> é o meio. O seu preço fica um pouco abaixo porque é o que a sua conta pede hoje — dá pra subir conforme você ganhar prova.";
     }
 
     el("tMin").textContent = brl(c.piso);
@@ -699,6 +816,7 @@
 
     verdict(c, hoje);
     ruler(c, hoje);
+    projecao(c, hoje);
 
     el("rM15").textContent = brl(r5(c.manut.d15));
     el("rM21").textContent = brl(r5(c.manut.d21));
